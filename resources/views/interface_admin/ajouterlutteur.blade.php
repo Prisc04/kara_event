@@ -18,6 +18,27 @@
                     </ol>
                   </nav>
 
+                  @if(Session::has('status_canton'))
+                  <div class="alert alert-success">
+                          {{Session::get('status_lutteur')}}
+                  </div>
+          @endif
+
+               @if(count($errors)> 0)
+
+                 <div class="alert alert-danger">
+                      <ul>
+                          @foreach($errors->all() as $error)
+
+                          <li>{{$error}}</li>
+
+                          @endforeach
+                      </ul>
+                 </div>
+
+
+              @endif
+
                 <form  method="POST" action="{{route('admin.store_lutteur')}}" enctype="multipart/form-data">
 
                     @csrf

@@ -23,10 +23,11 @@
           <table class="table table-striped">
             <thead>
                 <th>Order #</th>
-                <th>Photo évènement</th>
                 <th>Libelle évènement</th>
                 <th>date début évènement</th>
+                <th>description évènement</th>
                 <th>date fin évènement</th>
+                <th>Photo évènement</th>
                 <th>Status</th>
                 <th>Actions</th>
             </thead>
@@ -38,13 +39,15 @@
                     <td>{{$key +1}}</td>
 
                         <td class="py-1">
-                            <img src="/storage/file/{{$canton->photo_canton}}" alt="image" />
+                            <img src="/storage/file/{{$evenement->photo_event}}" alt="image" />
                         </td>
-                    <td> {{$canton->nom_canton}}</td>
-                    <td> {{$canton->description_canton }} </td>
+                    <td> {{$evenement->libelle_event}}</td>
+                    <td> {{$evenement->date_debut_event}}</td>
+                    <td> {{$evenement->date_fin_event}}</td>
+                    <td> {{$evenement->description_event }} </td>
 
                     <td>
-                        @if($canton->status == 1)
+                        @if($evenement->status_event == 1)
 
                         <label class="badge badge-success">Activé</label>
 
@@ -57,21 +60,21 @@
                     </td>
 
                     <td>
-                        <!--
-                        <button class="btn btn-outline-primary" onclick="window.location ='{{url('/edit_produit/'.$produit->id)}}'">Modifier</button>
-                        <button class="btn btn-outline-danger"><a href="{{url('/supprimerproduit/'.$produit->id)}}" id="delete">Supprimer</button>
-                            -->
-                        @if($canton->status == 1)
 
-                        <button class="btn btn-outline-warning" onclick="window.location ='{{url('/desactiver_canton/'.$canton->id)}}'">Désactiver</button>
+                        <button class="btn btn-outline-primary"> <a href="{{route('admin.evenementOne',$evenement->id)}}">Modifier</a></button>
+                        <button class="btn btn-outline-danger"><a href="{{route('admin.supprimer_evenement',$evenement->id)}}" id="delete">Supprimer</a></button>
+
+                        @if($evenement->status_event == 1)
+
+                        <button class="btn btn-outline-warning" onclick="window.location"> <a href="{{route('admin.desactiver_evenement',$evenement->id)}}">Désactiver</a></button>
 
                         @else
 
-                        <button class="btn btn-outline-success" onclick="window.location ='{{url('/activer_canton/'.$canton->id)}}'">Activer</button>
+                        <button class="btn btn-outline-success" onclick="window.location"> <a href="{{route('admin.activer_evenement',$evenement->id)}}">Activer</a></button>
 
                         @endif
 
-                      </td>
+                    </td>
 
                 </tr>
 

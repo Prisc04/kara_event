@@ -16,7 +16,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="{{route('admin.creercanton')}}">Créer les canton</a></li>
-              <li class="breadcrumb-item active" aria-current="page">liste canton</li>
+              <li class="breadcrumb-item active" aria-current="page">liste des cantons</li>
             </ol>
           </nav>
         <div class="table-responsive">
@@ -26,7 +26,7 @@
                 <th>Photo canton</th>
                 <th>Nom canton</th>
                 <th>Description canton</th>
-                <th>Status</th>
+                <th>Status canton</th>
                 <th>Actions</th>
             </thead>
 
@@ -43,7 +43,7 @@
                     <td> {{$canton->description_canton }} </td>
 
                     <td>
-                        @if($canton->status == 1)
+                        @if($canton->status_canton == 1)
 
                         <label class="badge badge-success">Activé</label>
 
@@ -56,21 +56,21 @@
                     </td>
 
                     <td>
-                        <!--
-                        <button class="btn btn-outline-primary" onclick="window.location ='{{url('/edit_produit/'.$produit->id)}}'">Modifier</button>
-                        <button class="btn btn-outline-danger"><a href="{{url('/supprimerproduit/'.$produit->id)}}" id="delete">Supprimer</button>
-                            -->
-                        @if($canton->status == 1)
 
-                        <button class="btn btn-outline-warning" onclick="window.location ='{{url('/desactiver_canton/'.$canton->id)}}'">Désactiver</button>
+                        <button class="btn btn-outline-primary"> <a href="{{route('admin.cantonOne',$canton->id)}}">Modifier</a></button>
+                        <button class="btn btn-outline-danger"><a href="{{route('admin.supprimer_canton',$canton->id)}}" id="delete">Supprimer</a></button>
+
+                        @if($canton->status_canton == 1)
+
+                        <button class="btn btn-outline-warning" onclick="window.location"> <a href="{{route('admin.desactiver_canton',$canton->id)}}">Désactiver</a></button>
 
                         @else
 
-                        <button class="btn btn-outline-success" onclick="window.location ='{{url('/activer_canton/'.$canton->id)}}'">Activer</button>
+                        <button class="btn btn-outline-success" onclick="window.location"> <a href="{{route('admin.activer_canton',$canton->id)}}">Activer</a></button>
 
                         @endif
 
-                      </td>
+                    </td>
 
                 </tr>
 

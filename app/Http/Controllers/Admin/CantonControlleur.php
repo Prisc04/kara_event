@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\canton;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\File;
 
 class CantonControlleur extends Controller
 {
@@ -48,8 +49,6 @@ class CantonControlleur extends Controller
             'image_canton'=>'required|image',
         ]);
 
-
-
         if(!$validator){
             return redirect()->back()->with('fail', "echec d'enregistrement");
         }else{
@@ -82,6 +81,8 @@ class CantonControlleur extends Controller
         //
     }
 
+
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -91,6 +92,8 @@ class CantonControlleur extends Controller
     public function edit($id)
     {
         //
+        $canton= canton::find($id);
+        return view('interface_admin.editcanton', compact('canton'));
     }
 
     /**
@@ -102,7 +105,39 @@ class CantonControlleur extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $canton= canton::find($id);
+        $canton->nom_canton = $request->nom_canton;
+        $canton->description_canton = $request->description_canton;
+
+        $validator= Validator::make($request->all(),[
+            'nom_canton'=>'required',
+            'description_canton'=>'required',
+            'image_canton'=>'required|image',
+        ]);
+
+        if(!$validator){
+            return redirect()->back()->with('fail', "echec d'enregistrement");
+        }else{
+
+            $path ='/file';
+            $file=$request->file('image_canton');
+            $file_name = time().'_'.$file->getClientOriginalName();
+            $upload = $file->storeAs($path, $file_name, 'public');
+            $destination = '/file/'.$canton->photo_canton;
+            if (File::exists($destination)){
+                File::delete($destination);
+            }
+            if($upload){
+                $canton->update([
+                    'nom_canton'=>$request->nom_canton,
+                    'description_canton'=>$request->description_canton,
+                    'photo_canton'=>$file_name,
+                ]);
+                $canton->save();
+                return redirect()->route('admin.listecanton')->with('success', "enregistrement avec success");
+            }
+        }
+
     }
 
     /**
@@ -111,8 +146,33 @@ class CantonControlleur extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $canton= canton::find($id);
+        $canton->delete();
+        return redirect()->back()->with('success', "vous avez supprimé avec success");
+
     }
+
+    public function activer_canton($id){
+        $canton =  canton::find($id);
+
+        $canton->status_canton = 1;
+
+        $canton->update();
+
+        return redirect()->back()->with('status_canton', 'le canton '.$canton->nom_canton.' a été activé avec succès');
+    }
+
+    public function desactiver_canton($id){
+        $canton =  canton::find($id);
+
+        $canton->status_canton = 0;
+
+        $canton->update();
+
+        return redirect()->back()->with('status_canton', 'le canton '.$canton->nom_canton.' a été desactiver avec succès');
+    }
+
+
 }

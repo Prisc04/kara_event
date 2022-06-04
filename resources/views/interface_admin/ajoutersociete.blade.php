@@ -17,6 +17,27 @@
                     </ol>
                   </nav>
 
+                  @if(Session::has('status_societe'))
+                  <div class="alert alert-success">
+                          {{Session::get('status_societe')}}
+                  </div>
+          @endif
+
+               @if(count($errors)> 0)
+
+                 <div class="alert alert-danger">
+                      <ul>
+                          @foreach($errors->all() as $error)
+
+                          <li>{{$error}}</li>
+
+                          @endforeach
+                      </ul>
+                 </div>
+
+
+              @endif
+
                 <form  method="POST" action="{{route('admin.store_societe')}}" enctype="multipart/form-data">
 
                     @csrf
@@ -73,7 +94,7 @@
                         <div class='col-md-6'>
                             <label for="">logo societe</label>
                             <div>
-                                <input type="file" name="logo_societe" id="image" required autocomplete="logo_societe" autofocus " class="form-control p_input @error('logo_societe') is-invalid @enderror" name="logo_societe" value="{{ old('logo_societe') }}" required autocomplete="logo_societe" autofocus " rows="6">
+                                <input type="file"  id="image" required autocomplete="logo_societe" autofocus " class="form-control p_input @error('logo_societe') is-invalid @enderror" name="logo_societe" value="{{ old('logo_societe') }}" required autocomplete="logo_societe" autofocus " rows="6">
                             </div>
                         </div>
                     </div>
@@ -82,7 +103,7 @@
                         <div class='col-md-6'>
                             <label for="">Photo societe</label>
                             <div>
-                                <input type="file" name="photo_societe" id="image" required autocomplete="photo_societe" autofocus " class="form-control p_input @error('photo_societe') is-invalid @enderror" name="photo_societe" value="{{ old('photo_societe') }}" required autocomplete="photo_societe" autofocus " rows="6">
+                                <input type="file"  id="image" required autocomplete="photo_societe" autofocus " class="form-control p_input @error('photo_societe') is-invalid @enderror" name="photo_societe" value="{{ old('photo_societe') }}" required autocomplete="photo_societe" autofocus " rows="6">
                             </div>
                         </div>
                     </div>

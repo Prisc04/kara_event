@@ -20,79 +20,76 @@
             </ol>
           </nav>
         <div class="table-responsive">
-          <table class="table table-striped">
-            <thead>
-                <th>Order #</th>
-                <th>Logo societe</th>
-                <th>Raison sociale</th>
-                <th>Adresse societe</th>
-                <th>Téléphone societe</th>
-                <th>Email societe</th>
-                <th>NIF societe</th>
-                <th>RCCM societe</th>
-                <th>Photo societe</th>
-                <th>Note societe</th>
-                <th>Status</th>
-                <th>Actions</th>
-            </thead>
+            <table class="table table-striped">
+                <thead>
+                    <th>Order #</th>
+                    <th>Logo societe</th>
+                    <th>Raison sociale</th>
+                    <th>Adresse societe</th>
+                    <th>Téléphone societe</th>
+                    <th>Email societe</th>
+                    <th>NIF societe</th>
+                    <th>RCCM societe</th>
+                    <th>Photo societe</th>
+                    <th>Note societe</th>
+                    <th>Status societe</th>
+                    <th>Actions</th>
+                </thead>
 
-            <tbody>
+                    <tbody>
 
-                @foreach ($societes  as $key=> $societe)
-                <tr>
-                    <td>{{$key +1}}</td>
+                        @foreach ($societes  as $key=> $societe)
+                        <tr>
+                            <td>{{$key +1}}</td>
+                                <td class="py-1">
+                                    <img src="/storage/file/{{$societe->logo_societe}}" alt="image" />
+                                </td>
+                            <td> {{$societe->raison_social}}</td>
+                            <td> {{$societe->adresse_societe}}</td>
+                            <td> {{$societe->numero_societe}}</td>
+                            <td> {{$societe->email_societe}}</td>
+                            <td> {{$societe->nif_societe}}</td>
+                            <td> {{$societe->rccm_societe}}</td>
 
-                        <td class="py-1">
-                            <img src="/storage/file/{{$societe->photo_socite}}" alt="image" />
-                        </td>
+                            <td class="py-1">
+                                <img src="/storage/file/{{$societe->photo_societe}}" alt="image" />
+                            </td>
 
-                        <td class="py-1">
-                            <img src="/storage/file/{{$societe->logo_socite}}" alt="image" />
-                        </td>
-                    <td> {{$societe->raison_social}}</td>
-                    <td> {{$societe->adresse_societe}}</td>
-                    <td> {{$societe->numero_societe}}</td>
-                    <td> {{$societe->email_societe}}</td>
-                    <td> {{$societe->nif_societe}}</td>
-                    <td> {{$societe->rccm_societe}}</td>
-                    <td> {{$societe->note_societe}}</td>
+                            <td> {{$societe->note_societe}}</td>
 
-                    <td>
-                        @if($societe->status == 1)
+                            <td>
+                                @if($societe->status_societe == 1)
 
-                        <label class="badge badge-success">Activé</label>
+                                <label class="badge badge-success">Activé</label>
 
-                        @else
+                                @else
 
-                        <label class="badge badge-danger">Desactivé</label>
+                                <label class="badge badge-danger">Desactivé</label>
 
-                        @endif
+                                @endif
 
-                    </td>
+                            </td>
 
-                    <td>
-                        <!--
-                        <button class="btn btn-outline-primary" onclick="window.location ='{{url('/edit_produit/'.$produit->id)}}'">Modifier</button>
-                        <button class="btn btn-outline-danger"><a href="{{url('/supprimerproduit/'.$produit->id)}}" id="delete">Supprimer</button>
-                            -->
-                        @if($societe->status == 1)
+                            <td>
 
-                        <button class="btn btn-outline-warning" onclick="window.location ='{{url('/desactiver_societe/'.$societe->id)}}'">Désactiver</button>
+                                <button class="btn btn-outline-primary"> <a href="{{route('admin.societeOne',$societe->id)}}">Modifier</a></button>
+                                <button class="btn btn-outline-danger"><a href="{{route('admin.supprimer_societe',$societe->id)}}" id="delete">Supprimer</a></button>
 
-                        @else
+                                @if($societe->status_societe == 1)
 
-                        <button class="btn btn-outline-success" onclick="window.location ='{{url('/activer_societe/'.$societe->id)}}'">Activer</button>
+                                <button class="btn btn-outline-warning" onclick="window.location"> <a href="{{route('admin.desactiver_societe',$societe->id)}}">Désactiver</a></button>
 
-                        @endif
+                                @else
 
-                      </td>
+                                <button class="btn btn-outline-success" onclick="window.location"> <a href="{{route('admin.activer_societe',$societe->id)}}">Activer</a></button>
 
-                </tr>
+                                @endif
 
-                  @endforeach
+                            </td>
+                        @endforeach
 
-            </tbody>
-          </table>
+                    </tbody>
+            </table>
         </div>
       </div>
     </div>

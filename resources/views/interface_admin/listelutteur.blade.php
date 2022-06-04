@@ -26,7 +26,7 @@
                 <th>Photo lutteur</th>
                 <th>Nom lutteur</th>
                 <th>Prenom lutteur</th>
-                <th>Status</th>
+                <th>Status lutteur</th>
                 <th>Actions</th>
             </thead>
 
@@ -43,7 +43,7 @@
                     <td> {{$lutteur->prenom_lutteur}} </td>
 
                     <td>
-                        @if($lutteur->status == 1)
+                        @if($lutteur->status_lutteur == 1)
 
                         <label class="badge badge-success">Activé</label>
 
@@ -54,6 +54,23 @@
                         @endif
 
                     </td>
+
+                    <td>
+
+
+                    <button class="btn btn-outline-primary"><a href="{{route('admin.lutteurOne',$lutteur->id)}}">Modifier</a></button>
+                    <button class="btn btn-outline-danger"><a href="{{route('admin.supprimer_lutteur',$lutteur->id)}}" id="delete">Supprimer</a></button>
+
+                       @if($lutteur->status_lutteur == 1)
+
+                       <button class="btn btn-outline-warning" onclick="window.location"> <a href="{{route('admin.desactiver_lutteur',$lutteur->id)}}">Désactiver</a></button>
+
+                       @else
+
+                       <button class="btn btn-outline-success" onclick="window.location"> <a href="{{route('admin.activer_lutteur',$lutteur->id)}}">Activer</a></button>
+
+                       @endif
+                   </td>
 
                 </tr>
 
