@@ -212,6 +212,24 @@
                 </div>
             </li>
 
+
+            <li class="nav-item menu-items">
+                <a class="nav-link" data-toggle="collapse" href="#agence" aria-expanded="false" aria-controls="ui-basic">
+                    <span class="menu-icon">
+                        <i class="mdi mdi-laptop"></i>
+                      </span>
+                      <span class="menu-title">Gestion agence</span>
+                      <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="agence">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.creer_agence')}}">Créer les agences</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.listeagence')}}">Liste des agences</a></li>
+
+                  </ul>
+                </div>
+            </li>
+
               <li class="nav-item menu-items">
                 <a class="nav-link" data-toggle="collapse" href="#evenement" aria-expanded="false" aria-controls="ui-basic">
                   <span class="menu-icon">

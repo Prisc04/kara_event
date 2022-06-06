@@ -28,6 +28,7 @@
                     <th>Adresse societe</th>
                     <th>Téléphone societe</th>
                     <th>Email societe</th>
+                    <th>type societe</th>
                     <th>NIF societe</th>
                     <th>RCCM societe</th>
                     <th>Photo societe</th>
@@ -48,6 +49,7 @@
                             <td> {{$societe->adresse_societe}}</td>
                             <td> {{$societe->numero_societe}}</td>
                             <td> {{$societe->email_societe}}</td>
+                            <td> {{$societe->type_societe->nom_type_societe}}</td>
                             <td> {{$societe->nif_societe}}</td>
                             <td> {{$societe->rccm_societe}}</td>
 

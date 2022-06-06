@@ -79,6 +79,16 @@
                                     @enderror
                     </div>
 
+                    <div class="form-group">
+                        <label for="type_societe_id">Type societe</label>
+                        <select class="form-control p_input @error('type_societe_id') is-invalid @enderror" name="type_societe_id" value="{{ old('type_societe_id') }}" required autocomplete="type_societe_id" autofocus>
+                            @foreach ($typesocietes  as $typesociete)
+                            <option value="{{$typesociete->id}}">{{$typesociete->nom_type_societe}}</option>
+                            @endforeach
+                        </select>
+
+                    </div>
+
 
                     <div class="form-group">
                         <label for="exampleInputName1">NIF societe</label>

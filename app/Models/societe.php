@@ -20,5 +20,11 @@ class societe extends Model
         'photo_societe',
         'note_societe',
         'status_societe',
+        'type_societe_id'
     ];
+
+    public function type_societe()
+    {
+        return $this->belongsTo(type_societe::class);
+    }
 }

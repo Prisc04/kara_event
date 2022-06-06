@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AgenceController;
 use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\CantonControlleur;
 use App\Http\Controllers\Admin\EvenementController;
@@ -123,6 +124,17 @@ Auth::routes();
          Route::get('/supprimer_article/{id}', [ArticleController::class,'destroy'])->name('supprimer_article');
          Route::get('/activer_article/{id}', [ArticleController::class,'activer_article'])->name('activer_article');
          Route::get('/desactiver_article/{id}', [ArticleController::class,'desactiver_article'])->name('desactiver_article');
+
+          //agence
+          Route::get('/creeragence', [AgenceController::class, 'create'])->name('creer_agence');
+          Route::post('/ajouteragence', [AgenceController::class, 'store'])->name('store_agence');
+          Route::get('/admin_listeagence', [AgenceController::class, 'index'])->name('listeagence');
+          Route::get('/agenceOne/{id}', [AgenceController::class, 'edit'])->name('agenceOne');
+          Route::put('/agencearticle/{id}', [AgenceController::class, 'update'])->name('updateagence');
+          Route::get('/supprimer_agence/{id}', [AgenceController::class,'destroy'])->name('supprimer_agence');
+          Route::get('/activer_agence/{id}', [AgenceController::class,'activer_agence'])->name('activer_agence');
+          Route::get('/desactiver_agence/{id}', [AgenceController::class,'desactiver_agence'])->name('desactiver_agence');
+
 
 
 

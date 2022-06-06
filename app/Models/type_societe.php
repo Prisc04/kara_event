@@ -15,4 +15,9 @@ class type_societe extends Model
         'status_type_societe',
     ];
 
+    public function societes()
+    {
+        return $this->hasMany(societe::class);
+    }
+
 }

@@ -28,8 +28,8 @@ Route::post('/register',[AuthController::class,'register']);
 Route::post('/login',[AuthController::class,'login']);
 
 Route::group(['middleware'=>['auth:sanctum']], function () {
-    Route::get('admins',[AdminController::class,'index']);
-    Route::post('/logout',[AuthController::class,'logout']);
+Route::get('admins',[AdminController::class,'index']);
+Route::post('/logout',[AuthController::class,'logout']);
 });
 
 

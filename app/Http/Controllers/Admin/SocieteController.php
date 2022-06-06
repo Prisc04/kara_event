@@ -4,7 +4,9 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\societe;
+use App\Models\type_societe;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Validator;
 
 class SocieteController extends Controller
@@ -18,6 +20,7 @@ class SocieteController extends Controller
     {
         //
         $societes = societe::all();
+
         return view('interface_admin.listesociete',compact('societes'));
     }
 
@@ -29,7 +32,8 @@ class SocieteController extends Controller
     public function create()
     {
         //
-        return view('interface_admin.ajoutersociete');
+        $typesocietes = type_societe::all();
+        return view('interface_admin.ajoutersociete',compact('typesocietes'));
     }
 
     /**
@@ -40,13 +44,15 @@ class SocieteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+
 
         $validator= Validator::make($request->all(),[
             'raison_social'=>'required',
             'adresse_societe'=>'required',
             'numero_societe'=>'required',
             'email_societe'=>'required|email|unique:societes,email_societe',
+            'type_societe_id'=>'required',
             'nif_societe'=>'required',
             'rccm_societe'=>'required',
             'logo_societe'=>'required|image',
@@ -75,6 +81,7 @@ class SocieteController extends Controller
                     'numero_societe'=>$request->numero_societe,
                     'email_societe'=>$request->email_societe,
                     'nif_societe'=>$request->nif_societe,
+                    'type_societe_id'=>$request->type_societe_id,
                     'rccm_societe'=>$request->rccm_societe,
                     'logo_societe'=>$file_name_logo,
                     'photo_societe'=>$file_name_photo,
@@ -110,8 +117,9 @@ class SocieteController extends Controller
     }
     public function edit($id)
     {
+        $typesocietes = type_societe::all();
         $societe= societe::find($id);
-        return view('interface_admin.editsociete', compact('societe'));
+        return view('interface_admin.editsociete', compact('societe','typesocietes'));
     }
 
     /**
@@ -131,6 +139,7 @@ class SocieteController extends Controller
             'adresse_societe'=>'required',
             'numero_societe'=>'required',
             'email_societe'=>'required|email|unique:societes,email_societe',
+            'type_societe_id'=>'required',
             'nif_societe'=>'required',
             'rccm_societe'=>'required',
             'logo_societe'=>'required|image',
@@ -158,6 +167,7 @@ class SocieteController extends Controller
                     'adresse_societe'=>$request->adresse_societe,
                     'numero_societe'=>$request->numero_societe,
                     'email_societe'=>$request->email_societe,
+                    'type_societe_id'=>$request->type_societe_id ,
                     'nif_societe'=>$request->nif_societe,
                     'rccm_societe'=>$request->rccm_societe,
                     'logo_societe'=>$file_name_logo,
