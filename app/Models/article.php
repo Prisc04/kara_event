@@ -12,7 +12,7 @@ class article extends Model
     protected $fillable = [
         'libelle_article',
         'nom_article',
-        'description_article',
+        'desciption_article',
         'photo_article',
         'prix_article',
         'status_article',

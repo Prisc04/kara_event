@@ -1,11 +1,13 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
-
+use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\CantonControlleur;
 use App\Http\Controllers\Admin\EvenementController;
 use App\Http\Controllers\Admin\LutteurController;
 use App\Http\Controllers\admin\SocieteController;
+use App\Http\Controllers\Admin\TypeArticleController;
+use App\Http\Controllers\Admin\TypeSocieteController;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Auth;
@@ -39,7 +41,7 @@ Auth::routes();
     });
 
          Route::middleware(['auth:admin', ])->group(function(){
-        Route::view('/home', 'interface_admin.hom')->name('home');
+            Route::get('/home', [AdminController::class,'hom'])->name('home');
             Route::view('/admin_register','interface_admin.register')->name('register');
             Route::post('/create',[AdminController::class,'create'])->name('create');
 
@@ -89,6 +91,39 @@ Auth::routes();
         Route::get('/supprimer_evenement/{id}', [EvenementController::class,'destroy'])->name('supprimer_evenement');
         Route::get('/activer_evenement/{id}', [EvenementController::class,'activer_evenement'])->name('activer_evenement');
         Route::get('/desactiver_evenement/{id}', [EvenementController::class,'desactiver_evenement'])->name('desactiver_evenement');
+
+        //type societe
+
+        Route::get('/creerTypeSociete', [TypeSocieteController::class, 'create'])->name('creer_typesociete');
+        Route::post('/ajoutertypesociete', [TypeSocieteController::class, 'store'])->name('store_typesociete');
+        Route::get('/admin_listeTypeSociete', [TypeSocieteController::class, 'index'])->name('listetypesociete');
+        Route::get('/TypeSocieteOne/{id}', [TypeSocieteController::class, 'edit'])->name('typesocieteOne');
+        Route::put('/updateTypeSociete/{id}', [TypeSocieteController::class, 'update'])->name('updatetypesociete');
+        Route::get('/supprimer_TypeSociete/{id}', [TypeSocieteController::class,'destroy'])->name('supprimer_typesociete');
+        Route::get('/activer_TypeSociete/{id}', [TypeSocieteController::class,'activer_typesociete'])->name('activer_typesociete');
+        Route::get('/desactiver_TypeSociete/{id}', [TypeSocieteController::class,'desactiver_typesociete'])->name('desactiver_typesociete');
+
+        //type article
+
+        Route::get('/creerTypeArticle', [TypeArticleController::class, 'create'])->name('creer_typearticle');
+        Route::post('/ajoutertypearticle', [TypeArticleController::class, 'store'])->name('store_typearticle');
+        Route::get('/admin_listetypearticle', [TypeArticleController::class, 'index'])->name('listetypearticle');
+        Route::get('/typearticleOne/{id}', [TypeArticleController::class, 'edit'])->name('typearticleOne');
+        Route::put('/updatetypearticle/{id}', [TypeArticleController::class, 'update'])->name('updatetypearticle');
+        Route::get('/supprimer_typearticle/{id}', [TypeArticleController::class,'destroy'])->name('supprimer_typearticle');
+        Route::get('/activer_typearticle/{id}', [TypeArticleController::class,'activer_typearticle'])->name('activer_typearticle');
+        Route::get('/desactiver_typearticle/{id}', [TypeArticleController::class,'desactiver_typearticle'])->name('desactiver_typearticle');
+
+         //article
+         Route::get('/creerarticle', [ArticleController::class, 'create'])->name('creer_article');
+         Route::post('/ajouterarticle', [ArticleController::class, 'store'])->name('store_article');
+         Route::get('/admin_listearticle', [ArticleController::class, 'index'])->name('listearticle');
+         Route::get('/articleOne/{id}', [ArticleController::class, 'edit'])->name('articleOne');
+         Route::put('/updatearticle/{id}', [ArticleController::class, 'update'])->name('updatearticle');
+         Route::get('/supprimer_article/{id}', [ArticleController::class,'destroy'])->name('supprimer_article');
+         Route::get('/activer_article/{id}', [ArticleController::class,'activer_article'])->name('activer_article');
+         Route::get('/desactiver_article/{id}', [ArticleController::class,'desactiver_article'])->name('desactiver_article');
+
 
 
     });

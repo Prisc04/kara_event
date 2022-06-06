@@ -144,8 +144,8 @@ class SocieteController extends Controller
             $path ='/file';
             $file_photo=$request->file('photo_societe');
             $file_logo=$request->file('logo_societe');
-            $file_name_photo = time().'_'.$file_photo->getClientOriginalName();
-            $file_name_logo = time().'_'.$file_logo->getClientOriginalName();
+            $file_name_photo = "images/".time().'_'.$file_photo->getClientOriginalName();
+            $file_name_logo = "images/".time().'_'.$file_logo->getClientOriginalName();
 
             $upload_photo = $file_photo->storeAs($path, $file_name_photo, 'public');
             $upload_logo = $file_logo->storeAs($path, $file_name_logo, 'public');

@@ -98,7 +98,7 @@
                     <span class="menu-icon">
                         <i class="mdi mdi-laptop"></i>
                       </span>
-                      <span class="menu-title">Gestion</span>
+                      <span class="menu-title">Gestion Admin</span>
                       <i class="menu-arrow"></i>
                 </a>
                 <div class="collapse" id="utilisateur">
@@ -110,22 +110,7 @@
                 </div>
             </li>
 
-            <li class="nav-item menu-items">
-                <a class="nav-link" data-toggle="collapse" href="#utilisateur" aria-expanded="false" aria-controls="ui-basic">
-                    <span class="menu-icon">
-                        <i class="mdi mdi-laptop"></i>
-                      </span>
-                      <span class="menu-title">Gestion typee societ</span>
-                      <i class="menu-arrow"></i>
-                </a>
-                <div class="collapse" id="utilisateur">
-                  <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.creertypesociete')}}">Créer les type societe</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.listetypesociete')}}">Liste des types societe</a></li>
 
-                  </ul>
-                </div>
-            </li>
 
               <li class="nav-item menu-items">
                 <a class="nav-link" data-toggle="collapse" href="#canton" aria-expanded="false" aria-controls="ui-basic">
@@ -160,6 +145,23 @@
                 </div>
               </li>
 
+            <li class="nav-item menu-items">
+                <a class="nav-link" data-toggle="collapse" href="#type_societe" aria-expanded="false" aria-controls="ui-basic">
+                    <span class="menu-icon">
+                        <i class="mdi mdi-laptop"></i>
+                      </span>
+                      <span class="menu-title">Gestion type societe</span>
+                      <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="type_societe">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.creer_typesociete')}}">Créer les type societe</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.listetypesociete')}}">Liste des types societe</a></li>
+
+                  </ul>
+                </div>
+            </li>
+
               <li class="nav-item menu-items">
                 <a class="nav-link" data-toggle="collapse" href="#societe" aria-expanded="false" aria-controls="ui-basic">
                   <span class="menu-icon">
@@ -172,10 +174,43 @@
                   <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="{{route('admin.creer_societe')}}">Créer société</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{route('admin.listesociete')}}">liste sociéte</a></li>
-
                   </ul>
                 </div>
               </li>
+
+            <li class="nav-item menu-items">
+                <a class="nav-link" data-toggle="collapse" href="#type_article" aria-expanded="false" aria-controls="ui-basic">
+                    <span class="menu-icon">
+                        <i class="mdi mdi-laptop"></i>
+                      </span>
+                      <span class="menu-title">Gestion type article</span>
+                      <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="type_article">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.creer_typearticle')}}">Créer les type article</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.listetypearticle')}}">Liste des types article</a></li>
+
+                  </ul>
+                </div>
+            </li>
+
+            <li class="nav-item menu-items">
+                <a class="nav-link" data-toggle="collapse" href="#article" aria-expanded="false" aria-controls="ui-basic">
+                    <span class="menu-icon">
+                        <i class="mdi mdi-laptop"></i>
+                      </span>
+                      <span class="menu-title">Gestion article</span>
+                      <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="article">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.creer_article')}}">Créer les articles</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.listearticle')}}">Liste des articles</a></li>
+
+                  </ul>
+                </div>
+            </li>
 
               <li class="nav-item menu-items">
                 <a class="nav-link" data-toggle="collapse" href="#evenement" aria-expanded="false" aria-controls="ui-basic">

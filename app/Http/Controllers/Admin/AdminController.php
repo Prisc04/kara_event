@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
+use App\Models\article;
+use App\Models\lutteur;
+use App\Models\societe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
@@ -71,8 +74,17 @@ class AdminController extends Controller
     public function liste(Request $request)
     {
         $admins = Admin::all();
+
         return view('interface_admin.affiche', compact('admins'));
 
+    }
+    public function hom()
+    {
+        $nombreadmins = Admin::count();
+        $nombresocietes = societe::count();
+        $nombrearticles = article::count();
+        $nombrelutteur = lutteur::count();
+        return view('interface_admin.hom',compact('nombreadmins', 'nombresocietes', 'nombrearticles', 'nombrelutteur'));
     }
 
 

@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CantonController;
 use App\Http\Controllers\EvenementController;
@@ -24,12 +24,15 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::post('/register',[AuthController::class,'register']);
+Route::post('/login',[AuthController::class,'login']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['middleware'=>['auth:sanctum']], function () {
+    Route::get('admins',[AdminController::class,'index']);
+    Route::post('/logout',[AuthController::class,'logout']);
 });
 
-Route::get('admins',[AdminController::class,'index']);
+
 Route::post('admins',[AdminController::class,'store']);
 Route::get('admins/{id}',[AdminController::class,'show']);
 Route::delete('admins/{id}',[AdminController::class,'destroy']);
