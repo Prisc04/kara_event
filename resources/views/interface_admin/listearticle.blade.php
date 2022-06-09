@@ -24,8 +24,8 @@
             <thead>
                 <th>Order #</th>
                 <th>Photo article</th>
-                <th>Libelle article</th>
                 <th>Nom article</th>
+                <th>type article</th>
                 <th>Description article</th>
                 <th>Prix article</th>
                 <th>Status article</th>
@@ -39,11 +39,15 @@
                     <td>{{$key +1}}</td>
 
                     <td class="py-1">
-                        <img src="/storage/file/{{$article->photo_article}}" alt="image" />
+                        <img src="/storage/file/{{$article->photo_article}}" alt="" />
+
                     </td>
-                    <td> {{$article->libelle_article}}</td>
                     <td> {{$article->nom_article}}</td>
+
+                    <td> {{$article->type_article->libelle_type_article}}</td>
+
                     <td> {{$article->desciption_article }} </td>
+
                     <td> {{$article->prix_article}}</td>
 
                     <td>

@@ -56,7 +56,6 @@ class LutteurController extends Controller
             $path ='/file';
             $file=$request->file('photo_lutteur');
             $file_name = time().'_'.$file->getClientOriginalName();
-
             $upload = $file->storeAs($path, $file_name, 'public');
 
             if($upload){
@@ -103,6 +102,7 @@ class LutteurController extends Controller
      */
     public function update(Request $request, $id)
     {
+
 
             $lutteur= lutteur::find($id);
             $lutteur->nom_lutteur = $request->nom_lutteur;

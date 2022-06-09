@@ -18,7 +18,7 @@
                     </ol>
                   </nav>
 
-                  @if(Session::has('status_canton'))
+                  @if(Session::has('status_lutteur'))
                   <div class="alert alert-success">
                           {{Session::get('status_lutteur')}}
                   </div>

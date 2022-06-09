@@ -13,14 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('publicites', function (Blueprint $table) {
+        Schema::create('type_publicites', function (Blueprint $table) {
             $table->id();
-            $table->string('nom_societe');
-            $table->string('description_publicite');
-            $table->string('photo_publicite');
-            $table->date('date_publicite');
-            $table->string('status_publicite');
-
+            $table->string('nom_type_publicite');
+            $table->string('status_publicite')->default(0);;
             $table->timestamps();
         });
     }
@@ -32,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('publicites');
+        Schema::dropIfExists('type_publicites');
     }
 };

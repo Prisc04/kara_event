@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use App\Models\article;
 use App\Models\lutteur;
+use App\Models\pub;
 use App\Models\societe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -78,14 +79,51 @@ class AdminController extends Controller
         return view('interface_admin.affiche', compact('admins'));
 
     }
+
+    public function destroy(Request $request, $id)
+    {
+        //
+        $admin= Admin::find($id);
+        $admin->delete();
+        return redirect()->back()->with('success', "vous avez supprimé avec success");
+
+    }
+
+    public function activer_admin($id){
+        $admin =  Admin::find($id);
+
+        $admin->admin_status = 1;
+
+        $admin->update();
+
+        return redirect()->back()->with('admin_status', 'Admin '.$admin->admin_nom.' a été activé avec succès');
+    }
+
+    public function desactiver_admin($id){
+        $admin =  Admin::find($id);
+
+        $admin->admin_status = 0;
+
+        $admin->update();
+
+        return redirect()->back()->with('admin_status', ' Admin'.$admin->admin_nom.' a été desactiver avec succès');
+    }
+
+
     public function hom()
     {
         $nombreadmins = Admin::count();
         $nombresocietes = societe::count();
-        $nombrearticles = article::count();
         $nombrelutteur = lutteur::count();
-        return view('interface_admin.hom',compact('nombreadmins', 'nombresocietes', 'nombrearticles', 'nombrelutteur'));
+        $nombrearticles = article::count();
+        $nombrepubs = pub::count();
+
+        return view('interface_admin.hom',compact('nombreadmins', 'nombresocietes', 'nombrelutteur','nombrearticles','nombrepubs'));
     }
+
+
+
+
 
 
 

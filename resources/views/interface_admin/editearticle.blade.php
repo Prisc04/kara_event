@@ -43,10 +43,14 @@ Kara-Event| Dashboard
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="exampleInputName1"> Libelle article</label>
-                    <input type="text" class="form-control p_input @error('libelle_article') is-invalid @enderror" name="libelle_article" value="{{$article->libelle_article}}" required autocomplete="libelle_article" autofocus>
-                </div>
+               <div class="form-group">
+                        <label for="exampleInputName1">Type article</label>
+                        <select class="form-control p_input @error('type_article_id') is-invalid @enderror" name="type_article_id" value="{{ old('type_article_id') }}" required autocomplete="type_article_id" autofocus>
+                            @foreach ($typearticles  as $typearticle)
+                            <option value="{{$typearticle->id}}">{{$typearticle->libelle_type_article}}</option>
+                            @endforeach
+                        </select>
+                    </div>
 
                 <div class="form-group">
                     <label for="exampleInputName1"> Nom article</label>

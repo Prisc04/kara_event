@@ -2,7 +2,9 @@
 @extends('master')
 
 @section('title')
-    Modifier cantons
+
+    Kara-Event| Dashboard
+
 @endsection
 
 @section('content')

@@ -162,7 +162,7 @@
                 </div>
             </li>
 
-              <li class="nav-item menu-items">
+            <li class="nav-item menu-items">
                 <a class="nav-link" data-toggle="collapse" href="#societe" aria-expanded="false" aria-controls="ui-basic">
                   <span class="menu-icon">
                     <i class="mdi mdi-laptop"></i>
@@ -177,6 +177,38 @@
                   </ul>
                 </div>
               </li>
+
+            <li class="nav-item menu-items">
+                <a class="nav-link" data-toggle="collapse" href="#type_publicite" aria-expanded="false" aria-controls="ui-basic">
+                    <span class="menu-icon">
+                        <i class="mdi mdi-laptop"></i>
+                      </span>
+                      <span class="menu-title">Gestion type publicite</span>
+                      <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="type_publicite">
+                  <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"> <a class="nav-link" href="{{route('admin.creer_typepublicite')}}">Créer les types publicites</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="{{route('admin.listetypepublicite')}}">Liste des types publicites</a></li>
+                  </ul>
+                </div>
+            </li>
+
+            <li class="nav-item menu-items">
+                <a class="nav-link" data-toggle="collapse" href="#publicite" aria-expanded="false" aria-controls="ui-basic">
+                    <span class="menu-icon">
+                        <i class="mdi mdi-laptop"></i>
+                      </span>
+                      <span class="menu-title">Gestion publicite</span>
+                      <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="publicite">
+                  <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"> <a class="nav-link" href="{{route('admin.creer_publicite')}}">Créer les publicites</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="{{route('admin.listepublicite')}}">Liste des publicites</a></li>
+                  </ul>
+                </div>
+            </li>
 
             <li class="nav-item menu-items">
                 <a class="nav-link" data-toggle="collapse" href="#type_article" aria-expanded="false" aria-controls="ui-basic">

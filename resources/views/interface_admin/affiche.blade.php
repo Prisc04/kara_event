@@ -35,11 +35,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($admins as $admin)
+                    @foreach ($admins as $key=> $admin)
 
                     <tr>
-
-                        <td>{{$admin->id}}</td>
+                        <td>{{$key +1}}</td>
                         <td>{{$admin->admin_nom}}</td>
                         <td>{{$admin->admin_prenom}}</td>
                         <td>{{$admin->admin_telephone}}</td>
@@ -47,7 +46,35 @@
                         <td>{{$admin->admin_role}}</td>
                         <td>{{$admin->admin_status}}</td>
 
+                        <td>
+                            @if($admin->admin_status == 1)
 
+                            <label class="badge badge-success">Activé</label>
+
+                            @else
+
+                            <label class="badge badge-danger">Desactivé</label>
+
+                            @endif
+
+                        </td>
+
+                        <td>
+
+
+
+                            <button class="btn btn-outline-danger"><a href="{{route('admin.supprimer_admin',$admin->id)}}" id="delete">Supprimer</a></button>
+
+                              @if($admin->admin_status == 1)
+
+                              <button class="btn btn-outline-warning" onclick="window.location"> <a href="{{route('admin.desactiver_admin',$admin->id)}}">Désactiver</a></button>
+
+                              @else
+
+                              <button class="btn btn-outline-success" onclick="window.location"> <a href="{{route('admin.activer_admin',$admin->id)}}">Activer</a></button>
+
+                              @endif
+                          </td>
 
                     </tr>
 

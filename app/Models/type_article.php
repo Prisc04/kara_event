@@ -15,4 +15,9 @@ class type_article extends Model
         'status_type_article',
 
     ];
+
+    public function articles()
+    {
+        return $this->hasMany(article::class);
+    }
 }

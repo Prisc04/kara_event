@@ -13,13 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('articles', function (Blueprint $table) {
+        Schema::create('pubs', function (Blueprint $table) {
             $table->id();
-            $table->string('nom_article');
-            $table->string('desciption_article');
-            $table->string('photo_article');
-            $table->string('prix_article');
-            $table->boolean('status_article')->default(0);
+            $table->string('nom_societe');
+            $table->string('description_publicite');
+            $table->string('photo_publicite');
+            $table->date('date_debut_publicite');
+            $table->date('date_fin_publicite');
+            $table->boolean('status_publicite')->default(0);
+
             $table->timestamps();
         });
     }
@@ -31,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('articles');
+        Schema::dropIfExists('pubs');
     }
 };

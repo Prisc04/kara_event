@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('articles', function (Blueprint $table) {
+        Schema::create('agrnces', function (Blueprint $table) {
             $table->id();
-            $table->string('nom_article');
-            $table->string('desciption_article');
-            $table->string('photo_article');
-            $table->string('prix_article');
-            $table->boolean('status_article')->default(0);
+            $table->string('nom_agence');
+            $table->string('photo_agence');
+            $table->string('localisation_agence');
+            $table->string('description_agence');
+            $table->boolean('status_agence')->default(0);
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('articles');
+        Schema::dropIfExists('agrnces');
     }
 };

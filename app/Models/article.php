@@ -10,13 +10,18 @@ class article extends Model
     use HasFactory;
 
     protected $fillable = [
-        'libelle_article',
+        'type_article_id',
         'nom_article',
         'desciption_article',
         'photo_article',
         'prix_article',
         'status_article',
+
     ];
+    public function type_article()
+    {
+        return $this->belongsTo(type_article::class,'type_article_id');
+    }
 
 }
 

@@ -1,4 +1,6 @@
 <?php
+
+
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CantonController;
@@ -6,10 +8,12 @@ use App\Http\Controllers\EvenementController;
 use App\Http\Controllers\LigneCommandeController;
 use App\Http\Controllers\LutteurController;
 use App\Http\Controllers\PrefectureController;
+use App\Http\Controllers\PubController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\SocieteController;
 use App\Http\Controllers\TypeArticleController;
 use App\Http\Controllers\TypeEvenemantController;
+use App\Http\Controllers\TypePubliciteController;
 use App\Http\Controllers\TypeSocieteController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -104,6 +108,19 @@ Route::post('ligne_commande',[LigneCommandeController::class,'store']);
 Route::get('ligne_commande/{id}',[LigneCommandeController::class,'show']);
 Route::delete('ligne_commande/{id}',[LigneCommandeController::class,'destroy']);
 //Route::put('ligne_commande/{id}',[LigneCommandeController::class,'update']);
+
+Route::get('type_publicite',[TypePubliciteController::class,'index']);
+Route::post('type_publicite',[TypePubliciteController::class,'store']);
+Route::get('type_publicite/{id}',[TypePubliciteController::class,'show']);
+Route::delete('type_publicite/{id}',[TypePubliciteController::class,'destroy']);
+//Route::put('type_publicite/{id}',[TypePubliciteController::class,'update']);
+
+
+Route::get('pub',[PubController::class,'index']);
+Route::post('pub',[PubController::class,'store']);
+Route::get('pub/{id}',[PubController::class,'show']);
+Route::delete('pub/{id}',[PubController::class,'destroy']);
+//Route::put('pub/{id}',[PubControllerr::class,'update']);
 
 
 

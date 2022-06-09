@@ -6,8 +6,10 @@ use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\CantonControlleur;
 use App\Http\Controllers\Admin\EvenementController;
 use App\Http\Controllers\Admin\LutteurController;
+use App\Http\Controllers\Admin\PubController;
 use App\Http\Controllers\admin\SocieteController;
 use App\Http\Controllers\Admin\TypeArticleController;
+use App\Http\Controllers\Admin\TypePubliciteController;
 use App\Http\Controllers\Admin\TypeSocieteController;
 use App\Http\Controllers\Controller;
 
@@ -42,14 +44,14 @@ Auth::routes();
     });
 
          Route::middleware(['auth:admin', ])->group(function(){
-            Route::get('/home', [AdminController::class,'hom'])->name('home');
-            Route::view('/admin_register','interface_admin.register')->name('register');
-            Route::post('/create',[AdminController::class,'create'])->name('create');
-
-
-
+        Route::get('/home', [AdminController::class,'hom'])->name('home');
+        Route::view('/admin_register','interface_admin.register')->name('register');
+        Route::post('/create',[AdminController::class,'create'])->name('create');
         Route::post('/logout', [AdminController::class, 'logout'])->name('logout');
         Route::get('/admin_affiche', [AdminController::class, 'liste'])->name('liste');
+        Route::get('/supprimer_admin/{id}', [AdminController::class, 'destroy'])->name('supprimer_admin');
+        Route::get('/activer_admin/{id}', [AdminController::class,'activer_admin'])->name('activer_admin');
+        Route::get('/desactiver_admin/{id}', [AdminController::class,'desactiver_admin'])->name('desactiver_admin');
 
 
         //canton
@@ -135,6 +137,27 @@ Auth::routes();
           Route::get('/activer_agence/{id}', [AgenceController::class,'activer_agence'])->name('activer_agence');
           Route::get('/desactiver_agence/{id}', [AgenceController::class,'desactiver_agence'])->name('desactiver_agence');
 
+          //type publicite
+
+        Route::get('/creerTypePublicite', [TypePubliciteController::class, 'create'])->name('creer_typepublicite');
+        Route::post('/ajoutertypepublicite', [TypePubliciteController::class, 'store'])->name('store_typepublicite');
+        Route::get('/admin_listeTypepublicite', [TypePubliciteController::class, 'index'])->name('listetypepublicite');
+        Route::get('/TypePubliciteOne/{id}', [TypePubliciteController::class, 'edit'])->name('typepubliciteOne');
+        Route::put('/updateTypePublicite/{id}', [TypePubliciteController::class, 'update'])->name('updatetypepublicite');
+        Route::get('/supprimer_TypePublicite/{id}', [TypePubliciteController::class,'destroy'])->name('supprimer_typepublicite');
+        Route::get('/activer_TypePublicite/{id}', [TypePubliciteController::class,'activer_typepublicite'])->name('activer_typepublicite');
+        Route::get('/desactiver_TypePublicite/{id}', [TypePubliciteController::class,'desactiver_typepublicite'])->name('desactiver_typepublicite');
+
+            //Pub
+
+        Route::get('/creerPublicite', [PubController::class, 'create'])->name('creer_publicite');
+        Route::post('/ajouterpublicite', [PubController::class, 'store'])->name('store_publicite');
+        Route::get('/admin_listepublicite', [PubController::class, 'index'])->name('listepublicite');
+        Route::get('/PubliciteOne/{id}', [PubController::class, 'edit'])->name('publiciteOne');
+        Route::put('/updatePublicite/{id}', [PubController::class, 'update'])->name('updatepublicite');
+        Route::get('/supprimer_Publicite/{id}', [PubController::class,'destroy'])->name('supprimer_publicite');
+        Route::get('/activer_Publicite/{id}', [PubController::class,'activer_publicite'])->name('activer_publicite');
+        Route::get('/desactiver_Publicite/{id}', [PubController::class,'desactiver_publicite'])->name('desactiver_publicite');
 
 
 

@@ -21,6 +21,7 @@ class SocieteController extends Controller
         $societe->adresse_societe  = $request->adresse_societe;
         $societe->numero_societe  = $request->numero_societe;
         $societe->email_societe  = $request->email_societe;
+        $societe->type_societe_id = $request->type_societe_id;
         $societe->nif_societe = $request->nif_societe;
         $societe->rccm_societe = $request->rccm_societe;
         $societe->logo_societe  = $request->logo_societe;

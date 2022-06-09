@@ -119,7 +119,7 @@ class CantonControlleur extends Controller
             return redirect()->back()->with('fail', "echec d'enregistrement");
         }else{
 
-            $path ='/file';
+            $path ='/files';
             $file=$request->file('image_canton');
             $file_name = time().'_'.$file->getClientOriginalName();
             $upload = $file->storeAs($path, $file_name, 'public');

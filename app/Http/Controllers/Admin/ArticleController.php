@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\article;
+use App\Models\type_article;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\File;
@@ -30,7 +31,8 @@ class ArticleController extends Controller
     public function create()
     {
         //
-        return view('interface_admin.ajouterarticle');
+        $typearticles = type_article::all();
+        return view('interface_admin.ajouterarticle',compact('typearticles'));
     }
 
     /**
@@ -44,7 +46,7 @@ class ArticleController extends Controller
         //
         $validator= Validator::make($request->all(),[
             'photo_article'=>'required|image',
-            'libelle_article'=>'required',
+            'type_article_id'=>'required',
             'nom_article'=>'required',
             'desciption_article'=>'required',
             'prix_article'=>'required',
@@ -54,7 +56,7 @@ class ArticleController extends Controller
         if(!$validator){
             return redirect()->back()->with('fail', "echec d'enregistrement");
         }else{
-            $path ='files/';
+            $path ='file/';
             $file=$request->file('photo_article');
             $file_name = "images/".time().'_'.$file->getClientOriginalName();
 
@@ -63,7 +65,7 @@ class ArticleController extends Controller
             if($upload){
                 article::create([
                     'photo_article'=>$file_name,
-                    'libelle_article'=>$request->libelle_article,
+                    'type_article_id'=>$request->type_article_id,
                     'nom_article'=>$request->nom_article,
                     'desciption_article'=>$request->desciption_article,
                     'prix_article'=>$request->prix_article,
@@ -93,8 +95,9 @@ class ArticleController extends Controller
     public function edit($id)
     {
         //
+        $typearticles = type_article::all();
         $article= article::find($id);
-        return view('interface_admin.editearticle', compact('article'));
+        return view('interface_admin.editearticle', compact('article','typearticles'));
     }
 
     /**
@@ -108,14 +111,10 @@ class ArticleController extends Controller
     {
         //
         $article= article::find($id);
-        $article->libelle_article = $request->libelle_article;
-        $article->nom_article = $request->nom_article;
-        $article->desciption_article = $request->desciption_article;
-        $article->prix_article = $request->prix_article;
 
         $validator= Validator::make($request->all(),[
             'photo_article'=>'required|image',
-            'libelle_article'=>'required',
+            'type_article_id'=>'required',
             'nom_article'=>'required',
             'desciption_article'=>'required',
             'prix_article'=>'required',
@@ -125,7 +124,7 @@ class ArticleController extends Controller
             return redirect()->back()->with('fail', "echec d'enregistrement");
         }else{
 
-            $path ='/files';
+            $path ='/file';
             $file=$request->file('photo_article');
             $file_name = time().'_'.$file->getClientOriginalName();
             $upload = $file->storeAs($path, $file_name, 'public');
@@ -136,7 +135,7 @@ class ArticleController extends Controller
             if($upload){
                 $article->update([
                     'photo_article'=>$file_name,
-                    'libelle_article'=>$request->libelle_article,
+                    'type_article_id'=>$request->type_article_id ,
                     'nom_article'=>$request->nom_article,
                     'desciption_article'=>$request->desciption_article,
                     'prix_article'=>$request->prix_article,
