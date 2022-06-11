@@ -80,16 +80,16 @@ Route::delete('prefecture/{id}',[PrefectureController::class,'destroy']);
 //Route::put('prefecture/{id}',[PrefectureController::class,'update']);
 
 Route::get('evenement',[EvenementController::class,'index']);
-Route::get('evenement',[EvenementController::class,'store']);
+Route::post('evenement',[EvenementController::class,'store']);
 Route::get('evenement/{id}',[EvenementController::class,'show']);
-Route::get('evenement/{id}',[EvenementController::class,'destroy']);
-//Route::get('evenement/{id}',[EvenementController::class,'update']);
+Route::delete('evenement/{id}',[EvenementController::class,'destroy']);
+//Route::put('evenement/{id}',[EvenementController::class,'update']);
 
 Route::get('type_evenement',[TypeEvenemantController::class,'index']);
-Route::get('type_evenement',[TypeEvenemantController::class,'store']);
+Route::post('type_evenement',[TypeEvenemantController::class,'store']);
 Route::get('type_evenement/{id}',[TypeEvenemantController::class,'show']);
-Route::get('type_evenement/{id}',[TypeEvenemantController::class,'destroy']);
-//Route::get('type_evenement/{id}',[TypeEvenemantController::class,'update']);
+Route::delete('type_evenement/{id}',[TypeEvenemantController::class,'destroy']);
+//Route::put('type_evenement/{id}',[TypeEvenemantController::class,'update']);
 
 Route::get('type_societe',[TypeSocieteController::class,'index']);
 Route::post('type_societe',[SocieteController::class,'store']);
