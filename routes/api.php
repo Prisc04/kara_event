@@ -4,6 +4,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CantonController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\EvenementController;
 use App\Http\Controllers\LigneCommandeController;
 use App\Http\Controllers\LutteurController;
@@ -121,6 +122,13 @@ Route::post('pub',[PubController::class,'store']);
 Route::get('pub/{id}',[PubController::class,'show']);
 Route::delete('pub/{id}',[PubController::class,'destroy']);
 //Route::put('pub/{id}',[PubControllerr::class,'update']);
+
+
+Route::get('contact',[ContactController::class,'index']);
+Route::post('contact',[ContactController::class,'store']);
+Route::get('contact/{id}',[ContactController::class,'show']);
+Route::delete('contact/{id}',[ContactController::class,'destroy']);
+//Route::put('contact/{id}',[ContactController::class,'update']);
 
 
 
