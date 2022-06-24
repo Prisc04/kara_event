@@ -20,7 +20,7 @@
                 </ol>
               </nav>
 
-            <form  method="POST" action="{{route('admin.updateagence', $agence->id)}}" enctype="multipart/form-data">
+            <form  method="POST" action="{{route('admin.updateagence', $agent->id)}}" enctype="multipart/form-data">
 
                 @csrf
                 @method('PUT')
@@ -38,7 +38,7 @@
 
                 <div class="form-group">
                     <label for="exampleInputName1"> Nom agence</label>
-                    <input type="text" class="form-control p_input @error('nom_agence') is-invalid @enderror" name="nom_agence" value="{{$agence->nom_agence}}" required autocomplete="nom_agence" autofocus>
+                    <input type="text" class="form-control p_input @error('nom_agence') is-invalid @enderror" name="nom_agence" value="{{$agent->nom_agence}}" required autocomplete="nom_agence" autofocus>
                 </div>
 
                 <div class="form-group">
@@ -52,12 +52,12 @@
 
                 <div class="form-group">
                     <label for="exampleTextarea1">Localisation agence</label>
-                    <input class="form-control  p_input @error('localisation_agence') is-invalid @enderror" name="localisation_agence" value="{{ $agence->localisation_agence }}" required autocomplete="localisation_agence" autofocus " id="exampleTextarea1" rows="4">
+                    <input class="form-control  p_input @error('localisation_agence') is-invalid @enderror" name="localisation_agence" value="{{ $agent->localisation_agence }}" required autocomplete="localisation_agence" autofocus " id="exampleTextarea1" rows="4">
                 </div>
 
                 <div class="form-group">
                     <label for="exampleTextarea1">Description agence</label>
-                    <input class="form-control  p_input @error('description_agence') is-invalid @enderror" name="description_agence" value="{{ $agence->description_agence }}" required autocomplete="description_agence" autofocus " id="exampleTextarea1" rows="4">
+                    <input class="form-control  p_input @error('description_agence') is-invalid @enderror" name="description_agence" value="{{ $agent->description_agence }}" required autocomplete="description_agence" autofocus " id="exampleTextarea1" rows="4">
                 </div>
 
 

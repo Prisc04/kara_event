@@ -15,6 +15,7 @@ class ProgrammeEvenementController extends Controller
 
     public function store (request $request){
         $programme_evenement = new programme_evenement();
+        $programme_evenement->jour_programme = $request->jour_programme;
         $programme_evenement->date_programme = $request->date_programme;
         $programme_evenement->heure_programme  = $request->heure_programme;
         $programme_evenement->match_programme  = $request->match_programme;

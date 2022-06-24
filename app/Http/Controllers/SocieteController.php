@@ -17,7 +17,7 @@ class SocieteController extends Controller
     public function store(Request $request){
 
         $societe = new societe();
-        $societe->raison_sociale  = $request->raison_sociale;
+        $societe->raison_social  = $request->raison_social;
         $societe->adresse_societe  = $request->adresse_societe;
         $societe->numero_societe  = $request->numero_societe;
         $societe->email_societe  = $request->email_societe;

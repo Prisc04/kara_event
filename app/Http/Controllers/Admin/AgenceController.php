@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\agrnce;
+
+use App\Models\agent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\File;
@@ -18,8 +19,8 @@ class AgenceController extends Controller
     public function index()
     {
         //
-        $agences = agrnce::all();
-        return view('interface_admin.listeagence',compact('agences'));
+        $agents = agent::all();
+        return view('interface_admin.listeagence',compact('agents'));
     }
 
     /**
@@ -60,7 +61,7 @@ class AgenceController extends Controller
 
             if($upload){
 
-                agrnce::create([
+                agent::create([
                     'nom_agence'=>$request->nom_agence,
                     'photo_agence'=>$file_name,
                     'localisation_agence'=>$request->localisation_agence,
@@ -92,8 +93,8 @@ class AgenceController extends Controller
     public function edit($id)
     {
         //
-        $agence= agrnce::find($id);
-        return view('interface_admin.editeagence', compact('agence'));
+        $agent=agent::find($id);
+        return view('interface_admin.editeagence', compact('agent'));
     }
 
     /**
@@ -106,10 +107,10 @@ class AgenceController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $agence= agrnce::find($id);
-        $agence->nom_agence = $request->nom_agence;
-        $agence->localisation_agence = $request->localisation_agence;
-        $agence->description_agence = $request->description_agence;
+        $agent= agent::find($id);
+        $agent->nom_agence = $request->nom_agence;
+        $agent->localisation_agence = $request->localisation_agence;
+        $agent->description_agence = $request->description_agence;
 
         $validator= Validator::make($request->all(),[
 
@@ -128,19 +129,19 @@ class AgenceController extends Controller
             $file=$request->file('photo_agence');
             $file_name = time().'_'.$file->getClientOriginalName();
             $upload = $file->storeAs($path, $file_name, 'public');
-            $destination = '/file/'.$agence->photo_agence;
+            $destination = '/file/'.$agent->photo_agence;
             if (File::exists($destination)){
                 File::delete($destination);
             }
             if($upload){
-                $agence->update([
+                $agent->update([
                     'nom_agence'=>$request->nom_agence,
                     'photo_agence'=>$file_name,
                     'localisation_agence'=>$request->localisation_agence,
                     'description_agence'=>$request->description_agence,
 
                 ]);
-                $agence->save();
+                $agent->save();
                 return redirect()->route('admin.listeagence')->with('success', "enregistrement avec success");
             }
         }
@@ -155,28 +156,28 @@ class AgenceController extends Controller
     public function destroy($id)
     {
         //
-        $agence= agrnce::find($id);
-        $agence->delete();
+        $agent= agent::find($id);
+        $agent->delete();
         return redirect()->back()->with('success', "vous avez supprimé avec success");
     }
 
     public function activer_agence($id){
-        $agence =  agrnce::find($id);
+        $agent =  agent::find($id);
 
-        $agence->status_agence = 1;
+        $agent->status_agence = 1;
 
-        $agence->update();
+        $agent->update();
 
-        return redirect()->back()->with('status_agence', 'Agence '.$agence->nom_agence.' a été activé avec succès');
+        return redirect()->back()->with('status_agence', 'Agence '.$agent->nom_agence.' a été activé avec succès');
     }
 
     public function desactiver_agence($id){
-        $agence =  agrnce::find($id);
+        $agent =  agent::find($id);
 
-        $agence->status_agence = 0;
+        $agent->status_agence = 0;
 
-        $agence->update();
+        $agent->update();
 
-        return redirect()->back()->with('status_agence', 'Agence '.$agence->nom_agence.' a été desactiver avec succès');
+        return redirect()->back()->with('status_agence', 'Agence '.$agent->nom_agence.' a été desactiver avec succès');
     }
 }

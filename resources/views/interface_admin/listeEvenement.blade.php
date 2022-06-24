@@ -25,6 +25,7 @@
                 <th>Order #</th>
                 <th>Libelle évènement</th>
                 <th>date début évènement</th>
+                <th>type évènement</th>
                 <th>description évènement</th>
                 <th>date fin évènement</th>
                 <th>Photo évènement</th>
@@ -38,11 +39,12 @@
                 <tr>
                     <td>{{$key +1}}</td>
 
-                        <td class="py-1">
-                            <img src="/storage/file/{{$evenement->photo_event}}" alt="image" />
-                        </td>
+                    <td class="py-1">
+                        <img src="/storage/file/{{$evenement->photo_event}}" alt="image" />
+                    </td>
                     <td> {{$evenement->libelle_event}}</td>
                     <td> {{$evenement->date_debut_event}}</td>
+                    <td> {{$evenement->type_evenement->nom_type_event}}</td>
                     <td> {{$evenement->date_fin_event}}</td>
                     <td> {{$evenement->description_event }} </td>
 

@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('site_touristiques', function (Blueprint $table) {
             $table->id();
-            $table->string('libelle_site');
             $table->string('nom_site');
             $table->string('description_site');
             $table->string('photo_site');
+            $table->string('localisation_site');
             $table->boolean('status_site')->default(0);
             $table->timestamps();
         });

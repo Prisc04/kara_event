@@ -34,23 +34,23 @@
 
                         <tbody>
 
-                            @foreach ($agences  as $key=> $agence)
+                            @foreach ($agents  as $key=> $agent)
                             <tr>
                                 <td>{{$key +1}}</td>
 
-                                <td> {{$agence->nom_agence}}</td>
+                                <td> {{$agent->nom_agence}}</td>
 
                                 <td class="py-1">
-                                    <img src="/storage/files/{{$agence->photo_agence}}" />
+                                    <img src="/storage/files/{{$agent->photo_agence}}" />
                                 </td>
 
-                                <td> {{$agence-> localisation_agence}} </td>
+                                <td> {{$agent-> localisation_agence}} </td>
 
-                                <td> {{$agence-> description_agence}} </td>
+                                <td> {{$agent-> description_agence}} </td>
 
 
                                 <td>
-                                    @if($agence->status_agence == 1)
+                                    @if($agent->status_agence == 1)
 
                                     <label class="badge badge-success">Activé</label>
 
@@ -64,16 +64,16 @@
 
                                 <td>
 
-                                    <button class="btn btn-outline-primary"> <a href="{{route('admin.agenceOne',$agence->id)}}">Modifier</a></button>
-                                    <button class="btn btn-outline-danger"><a href="{{route('admin.supprimer_agence',$agence->id)}}" id="delete">Supprimer</a></button>
+                                    <button class="btn btn-outline-primary"> <a href="{{route('admin.agenceOne',$agent->id)}}">Modifier</a></button>
+                                    <button class="btn btn-outline-danger"><a href="{{route('admin.supprimer_agence',$agent->id)}}" id="delete">Supprimer</a></button>
 
-                                    @if($agence->status_agence == 1)
+                                    @if($agent->status_agence == 1)
 
-                                    <button class="btn btn-outline-warning" onclick="window.location"> <a href="{{route('admin.desactiver_agence',$agence->id)}}">Désactiver</a></button>
+                                    <button class="btn btn-outline-warning" onclick="window.location"> <a href="{{route('admin.desactiver_agence',$agent->id)}}">Désactiver</a></button>
 
                                     @else
 
-                                    <button class="btn btn-outline-success" onclick="window.location"> <a href="{{route('admin.activer_agence',$agence->id)}}">Activer</a></button>
+                                    <button class="btn btn-outline-success" onclick="window.location"> <a href="{{route('admin.activer_agence',$agent->id)}}">Activer</a></button>
 
                                     @endif
 

@@ -1,18 +1,25 @@
 <?php
 
+use App\Http\Controllers\Admin\ActualiteController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AgenceController;
 use App\Http\Controllers\Admin\ArticleController;
+use App\Http\Controllers\Admin\BarRestoController;
 use App\Http\Controllers\Admin\CantonControlleur;
 use App\Http\Controllers\Admin\EvenementController;
+use App\Http\Controllers\Admin\HotelController;
 use App\Http\Controllers\Admin\LutteurController;
+use App\Http\Controllers\Admin\PharmacieController;
+use App\Http\Controllers\Admin\ProgrammeEvalaController;
+use App\Http\Controllers\Admin\ProgrammeEvenementController;
 use App\Http\Controllers\Admin\PubController;
-use App\Http\Controllers\admin\SocieteController;
+use App\Http\Controllers\Admin\ScoreController;
+use App\Http\Controllers\Admin\SocieteController;
 use App\Http\Controllers\Admin\TypeArticleController;
+use App\Http\Controllers\Admin\TypeEvenementController;
 use App\Http\Controllers\Admin\TypePubliciteController;
 use App\Http\Controllers\Admin\TypeSocieteController;
 use App\Http\Controllers\Controller;
-
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -37,13 +44,13 @@ Auth::routes();
     Route::prefix('admin')->name('admin.')->group(function(){
     Route::middleware(['guest:admin', ])->group(function(){
     Route::view('/admin_connexion_login','interface_admin.login')->name('login');
-    Route::view('/admin_register','interface_admin.register2')->name('register');
-    Route::post('/create',[AdminController::class,'create'])->name('create');
+    // Route::view('/admin_register','interface_admin.register2')->name('register');
+    //Route::post('/create',[AdminController::class,'create'])->name('create');
     Route::post('/check', [AdminController::class,'check'])->name('check');
 
     });
 
-         Route::middleware(['auth:admin', ])->group(function(){
+        Route::middleware(['auth:admin', ])->group(function(){
         Route::get('/home', [AdminController::class,'hom'])->name('home');
         Route::view('/admin_register','interface_admin.register')->name('register');
         Route::post('/create',[AdminController::class,'create'])->name('create');
@@ -63,6 +70,16 @@ Auth::routes();
         Route::get('/supprimer_canton/{id}', [CantonControlleur::class,'destroy'])->name('supprimer_canton');
         Route::get('/activer_canton/{id}', [CantonControlleur::class,'activer_canton'])->name('activer_canton');
         Route::get('/desactiver_canton/{id}', [CantonControlleur::class,'desactiver_canton'])->name('desactiver_canton');
+
+        //type societe
+        Route::get('/creerTypeSociete', [TypeSocieteController::class, 'create'])->name('creer_typesociete');
+        Route::post('/ajoutertypesociete', [TypeSocieteController::class, 'store'])->name('store_typesociete');
+        Route::get('/admin_listeTypeSociete', [TypeSocieteController::class, 'index'])->name('listetypesociete');
+        Route::get('/TypeSocieteOne/{id}', [TypeSocieteController::class, 'edit'])->name('typesocieteOne');
+        Route::put('/updateTypeSociete/{id}', [TypeSocieteController::class, 'update'])->name('updatetypesociete');
+        Route::get('/supprimer_TypeSociete/{id}', [TypeSocieteController::class,'destroy'])->name('supprimer_typesociete');
+        Route::get('/activer_TypeSociete/{id}', [TypeSocieteController::class,'activer_typesociete'])->name('activer_typesociete');
+        Route::get('/desactiver_TypeSociete/{id}', [TypeSocieteController::class,'desactiver_typesociete'])->name('desactiver_typesociete');
 
         //societe
         Route::get('/creersociete', [SocieteController::class, 'create'])->name('creer_societe');
@@ -95,19 +112,19 @@ Auth::routes();
         Route::get('/activer_evenement/{id}', [EvenementController::class,'activer_evenement'])->name('activer_evenement');
         Route::get('/desactiver_evenement/{id}', [EvenementController::class,'desactiver_evenement'])->name('desactiver_evenement');
 
-        //type societe
+         // Type Evenement
+         Route::get('/creerTypeEvenement', [TypeEvenementController::class, 'create'])->name('creer_TypeEvenement');
+         Route::post('/ajoutertypeEvenement', [TypeEvenementController::class, 'store'])->name('store_TypeEvenement');
+         Route::get('/admin_listeTypeEvenement', [TypeEvenementController::class, 'index'])->name('listeTypeEvenement');
+         Route::get('/TypeEvenementOne/{id}', [TypeEvenementController::class, 'edit'])->name('TypeEvenementOne');
+         Route::put('/updateTypeEvenement/{id}', [TypeEvenementController::class, 'update'])->name('update_TypeEvenement');
+         Route::get('/supprimer_TypeEvenement/{id}', [TypeEvenementController::class,'destroy'])->name('supprimer_TypeEvenement');
+         Route::get('/activer_TypeEvenement/{id}', [TypeEvenementController::class,'activer_TypeEvenement'])->name('activer_TypeEvenement');
+         Route::get('/desactiver_TypeEvenement/{id}', [TypeEvenementController::class,'desactiver_TypeEvenement'])->name('desactiver_TypeEvenement');
 
-        Route::get('/creerTypeSociete', [TypeSocieteController::class, 'create'])->name('creer_typesociete');
-        Route::post('/ajoutertypesociete', [TypeSocieteController::class, 'store'])->name('store_typesociete');
-        Route::get('/admin_listeTypeSociete', [TypeSocieteController::class, 'index'])->name('listetypesociete');
-        Route::get('/TypeSocieteOne/{id}', [TypeSocieteController::class, 'edit'])->name('typesocieteOne');
-        Route::put('/updateTypeSociete/{id}', [TypeSocieteController::class, 'update'])->name('updatetypesociete');
-        Route::get('/supprimer_TypeSociete/{id}', [TypeSocieteController::class,'destroy'])->name('supprimer_typesociete');
-        Route::get('/activer_TypeSociete/{id}', [TypeSocieteController::class,'activer_typesociete'])->name('activer_typesociete');
-        Route::get('/desactiver_TypeSociete/{id}', [TypeSocieteController::class,'desactiver_typesociete'])->name('desactiver_typesociete');
+
 
         //type article
-
         Route::get('/creerTypeArticle', [TypeArticleController::class, 'create'])->name('creer_typearticle');
         Route::post('/ajoutertypearticle', [TypeArticleController::class, 'store'])->name('store_typearticle');
         Route::get('/admin_listetypearticle', [TypeArticleController::class, 'index'])->name('listetypearticle');
@@ -138,7 +155,6 @@ Auth::routes();
           Route::get('/desactiver_agence/{id}', [AgenceController::class,'desactiver_agence'])->name('desactiver_agence');
 
           //type publicite
-
         Route::get('/creerTypePublicite', [TypePubliciteController::class, 'create'])->name('creer_typepublicite');
         Route::post('/ajoutertypepublicite', [TypePubliciteController::class, 'store'])->name('store_typepublicite');
         Route::get('/admin_listeTypepublicite', [TypePubliciteController::class, 'index'])->name('listetypepublicite');
@@ -148,8 +164,7 @@ Auth::routes();
         Route::get('/activer_TypePublicite/{id}', [TypePubliciteController::class,'activer_typepublicite'])->name('activer_typepublicite');
         Route::get('/desactiver_TypePublicite/{id}', [TypePubliciteController::class,'desactiver_typepublicite'])->name('desactiver_typepublicite');
 
-            //Pub
-
+         //Pub
         Route::get('/creerPublicite', [PubController::class, 'create'])->name('creer_publicite');
         Route::post('/ajouterpublicite', [PubController::class, 'store'])->name('store_publicite');
         Route::get('/admin_listepublicite', [PubController::class, 'index'])->name('listepublicite');
@@ -159,8 +174,76 @@ Auth::routes();
         Route::get('/activer_Publicite/{id}', [PubController::class,'activer_publicite'])->name('activer_publicite');
         Route::get('/desactiver_Publicite/{id}', [PubController::class,'desactiver_publicite'])->name('desactiver_publicite');
 
+        // Actualite
+        Route::get('/creerActualite', [ActualiteController::class, 'create'])->name('creer_actualite');
+        Route::post('/ajouteractualite', [ActualiteController::class, 'store'])->name('store_actualite');
+        Route::get('/admin_listeactualite', [ActualiteController::class, 'index'])->name('listeactualite');
+        Route::get('/ActualiteOne/{id}', [ActualiteController::class, 'edit'])->name('actualiteOne');
+        Route::put('/updateActualite/{id}', [ActualiteController::class, 'update'])->name('updateActualite');
+        Route::get('/supprimer_actualite/{id}', [ActualiteController::class,'destroy'])->name('supprimer_actualite');
+        Route::get('/activer_actualite/{id}', [ActualiteController::class,'activer_actualite'])->name('activer_actualite');
+        Route::get('/desactiver_actualite/{id}', [ActualiteController::class,'desactiver_actualite'])->name('desactiver_actualite');
+
+        // Programme evenement
+        Route::get('/creerProgramme', [ProgrammeEvenementController::class, 'create'])->name('creer_programme');
+        Route::post('/ajouterProgramme', [ProgrammeEvenementController::class, 'store'])->name('store_programme');
+        Route::get('/admin_listeProgramme', [ProgrammeEvenementController::class, 'index'])->name('listeprogramme');
+        Route::get('/ProgrammeOne/{id}', [ProgrammeEvenementController::class, 'edit'])->name('programmeOne');
+        Route::put('/updateProgramme/{id}', [ProgrammeEvenementController::class, 'update'])->name('updateprogramme');
+        Route::get('/supprimer_Programme/{id}', [ProgrammeEvenementController::class,'destroy'])->name('supprimer_programme');
+        Route::get('/activer_Programme/{id}', [ProgrammeEvenementController::class,'activer_programme'])->name('activer_programme');
+        Route::get('/desactiver_Programme/{id}', [ProgrammeEvenementController::class,'desactiver_programme'])->name('desactiver_programme');
+
+         // hotel
+         Route::get('/creerHotel', [HotelController::class, 'create'])->name('creer_hotel');
+         Route::post('/ajouterHotel', [HotelController::class, 'store'])->name('store_hotel');
+         Route::get('/admin_listeHotel', [HotelController::class, 'index'])->name('listehotel');
+         Route::get('/HotelOne/{id}', [HotelController::class, 'edit'])->name('hotelOne');
+         Route::put('/updateHotel/{id}', [HotelController::class, 'update'])->name('updatehotel');
+         Route::get('/supprimer_Hotel/{id}', [HotelController::class,'destroy'])->name('supprimer_hotel');
+         Route::get('/activer_Hotel/{id}', [HotelController::class,'activer_hotel'])->name('activer_hotel');
+         Route::get('/desactiver_Hotel/{id}', [HotelController::class,'desactiver_hotel'])->name('desactiver_hotel');
 
 
+        // Bar&Resto
+        Route::get('/creerBarResto',[BarRestoController::class,'create'])->name('creer_BarResto');
+        Route::post('/ajouterBarResto', [BarRestoController::class, 'store'])->name('store_BarResto');
+        Route::get('/admin_BarResto', [BarRestoController::class, 'index'])->name('listeBarResto');
+        Route::get('/BarRestoOne/{id}', [BarRestoController::class, 'edit'])->name('BarRestoOne');
+        Route::put('/updateBarResto/{id}', [BarRestoController::class, 'update'])->name('updateBarResto');
+        Route::get('/supprimer_BarResto/{id}', [BarRestoController::class,'destroy'])->name('supprimer_BarResto');
+        Route::get('/activer_BarResto/{id}', [BarRestoController::class,'activer_BarResto'])->name('activer_BarResto');
+        Route::get('/desactiver_BarResto/{id}', [BarRestoController::class,'desactiver_BarResto'])->name('desactiver_BarResto');
+
+        // Pharmacie
+        Route::get('/creerPharmacie',[PharmacieController::class,'create'])->name('creer_Pharmacie');
+        Route::post('/ajouterpharmacie', [PharmacieController::class, 'store'])->name('store_Pharmacie');
+        Route::get('/admin_Pharmacie', [PharmacieController::class, 'index'])->name('listePharmacie');
+        Route::get('/PharmacieOne/{id}', [PharmacieController::class, 'edit'])->name('PharmacieOne');
+        Route::put('/updatePharmacie/{id}', [PharmacieController::class, 'update'])->name('updatePharmacie');
+        Route::get('/supprimer_Pharmacie/{id}', [PharmacieController::class,'destroy'])->name('supprimer_Pharmacie');
+        Route::get('/activer_Pharmacie/{id}', [PharmacieController::class,'activer_Pharmacie'])->name('activer_Pharmacie');
+        Route::get('/desactiver_Pharmacie/{id}', [PharmacieController::class,'desactiver_Pharmacie'])->name('desactiver_Pharmacie');
+
+        //score
+        Route::get('/creerScore',[ScoreController::class,'create'])->name('creer_Score');
+        Route::post('/ajouterScore', [ScoreController::class,'store'])->name('store_Score');
+        Route::get('/admin_Score', [ScoreController::class, 'index'])->name('listeScore');
+        Route::get('/ScoreOne/{id}', [ScoreController::class, 'edit'])->name('ScoreOne');
+        Route::put('/updateScore/{id}', [ScoreController::class, 'update'])->name('updateScore');
+        Route::get('/supprimer_Score/{id}', [ScoreController::class,'destroy'])->name('supprimer_Score');
+        Route::get('/activer_Score/{id}', [ScoreController::class,'activer_score'])->name('activer_Score');
+        Route::get('/desactiver_Score/{id}', [ScoreController::class,'desactiver_score'])->name('desactiver_Score');
+
+         // Programme evala
+         Route::get('/creerProgrammeEvala', [ProgrammeEvalaController::class, 'create'])->name('creer_ProgrammeEvela');
+         Route::post('/ajouterProgrammeEvala', [ProgrammeEvalaController::class, 'store'])->name('store_ProgrammeEvela');
+         Route::get('/admin_listerProgrammeEvala', [ProgrammeEvalaController::class, 'index'])->name('listerProgrammeEvala');
+         Route::get('/ProgrammeEvalaOne/{id}', [ProgrammeEvalaController::class, 'edit'])->name('ProgrammeEvelaOne');
+         Route::put('/updateProgrammeEvala/{id}', [ProgrammeEvalaController::class, 'update'])->name('updateProgrammeEvela');
+         Route::get('/supprimer_ProgrammeEvala/{id}', [ProgrammeEvalaController::class,'destroy'])->name('supprimer_ProgrammeEvela');
+         Route::get('/activer_ProgrammeEvala/{id}', [ProgrammeEvalaController::class,'activer_ProgrammeEvela'])->name('activer_ProgrammeEvela');
+         Route::get('/desactiver_ProgrammeEvala/{id}', [ProgrammeEvalaController::class,'desactiver_ProgrammeEvala'])->name('desactiver_ProgrammeEvela');
     });
 });
 

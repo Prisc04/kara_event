@@ -15,13 +15,13 @@ class PubController extends Controller
 
     public function store (request $request){
         $pub = new pub();
-        $pub->nom_socite  = $request->nom_socite;
+        $pub->nom_societe  = $request->nom_societe;
         $pub->photo_publicite  = $request->photo_publicite;
         $pub->description_publicite  = $request->description_publicite;
         $pub->type_publicite_id = $request->type_publicite_id;
         $pub->date_debut_publicite  = $request->date_debut_publicite;
-        $pubdate_fin_publicite  = $request->date_fin_publicite;
-        $save= $pub->save();
+        $pub->date_fin_publicite  = $request->date_fin_publicite;
+        $pub->save();
         return 'ajouter avec success';
 
     }

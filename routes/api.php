@@ -1,15 +1,23 @@
 <?php
 
+use App\Http\Controllers\ActualiteController;
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\BarRestoController;
 use App\Http\Controllers\CantonController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\EvenementController;
+use App\Http\Controllers\HotelController;
 use App\Http\Controllers\LigneCommandeController;
 use App\Http\Controllers\LutteurController;
+use App\Http\Controllers\PharmacieController;
 use App\Http\Controllers\PrefectureController;
+use App\Http\Controllers\ProgrammeEvalaController;
+use App\Http\Controllers\ProgrammeEvenementController;
 use App\Http\Controllers\PubController;
+use App\Http\Controllers\ScoreController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\SocieteController;
 use App\Http\Controllers\TypeArticleController;
@@ -18,7 +26,6 @@ use App\Http\Controllers\TypePubliciteController;
 use App\Http\Controllers\TypeSocieteController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -33,10 +40,10 @@ Route::post('/register',[AuthController::class,'register']);
 Route::post('/login',[AuthController::class,'login']);
 
 Route::group(['middleware'=>['auth:sanctum']], function () {
-Route::get('admins',[AdminController::class,'index']);
+
 Route::post('/logout',[AuthController::class,'logout']);
 });
-
+Route::get('admins',[AdminController::class,'index']);
 
 Route::post('admins',[AdminController::class,'store']);
 Route::get('admins/{id}',[AdminController::class,'show']);
@@ -68,11 +75,6 @@ Route::delete('article/{id}',[ArticleController::class,'destroy']);
 //Route::put('article/{id}',[ArticleController::class,'update']);
 
 
-Route::get('site_touristique',[SiteController::class,'index']);
-Route::post('site_touristique',[SiteController::class,'store']);
-Route::get('site_touristique/{id}',[SiteController::class,'show']);
-Route::delete('site_touristique/{id}',[SiteController::class,'destroy']);
-//Route::put('site_touristique/{id}',[SiteController::class,'update']);
 
 Route::get('prefecture',[PrefectureController::class,'index']);
 Route::post('prefecture',[PrefectureController::class,'store']);
@@ -116,19 +118,69 @@ Route::get('type_publicite/{id}',[TypePubliciteController::class,'show']);
 Route::delete('type_publicite/{id}',[TypePubliciteController::class,'destroy']);
 //Route::put('type_publicite/{id}',[TypePubliciteController::class,'update']);
 
-
 Route::get('pub',[PubController::class,'index']);
 Route::post('pub',[PubController::class,'store']);
 Route::get('pub/{id}',[PubController::class,'show']);
 Route::delete('pub/{id}',[PubController::class,'destroy']);
 //Route::put('pub/{id}',[PubControllerr::class,'update']);
 
-
 Route::get('contact',[ContactController::class,'index']);
 Route::post('contact',[ContactController::class,'store']);
 Route::get('contact/{id}',[ContactController::class,'show']);
 Route::delete('contact/{id}',[ContactController::class,'destroy']);
 //Route::put('contact/{id}',[ContactController::class,'update']);
+
+Route::get('actualite',[ActualiteController::class,'index']);
+Route::post('actualite',[ActualiteController::class,'store']);
+Route::get('actualite/{id}',[ActualiteController::class,'show']);
+Route::delete('actualite/{id}',[ActualiteController::class,'destroy']);
+//Route::put('actualite/{id}',[ActualiteController::class,'update']);
+
+Route::get('programme_evenement',[ProgrammeEvenementController::class,'index']);
+Route::post('programme_evenement',[ProgrammeEvenementController::class,'store']);
+Route::get('programme_evenement/{id}',[ProgrammeEvenementController::class,'show']);
+Route::delete('programme_evenement/{id}',[ProgrammeEvenementController::class,'destroy']);
+//Route::put('programme_evenement/{id}',[ProgrammeEvenementController::class,'update']);
+
+Route::get('hotel',[HotelController::class,'index']);
+Route::post('hotel',[HotelController::class,'store']);
+Route::get('hotel/{id}',[HotelController::class,'show']);
+Route::delete('hotel/{id}',[HotelController::class,'destroy']);
+//Route::put('hotel/{id}',[HotelController::class,'update']);
+
+
+Route::get('bar_resto',[BarRestoController::class,'index']);
+Route::post('bar_resto',[BarRestoController::class,'store']);
+Route::get('bar_resto/{id}',[BarRestoController::class,'show']);
+Route::delete('bar_resto/{id}',[BarRestoController::class,'destroy']);
+//Route::put('bar_resto/{id}',[BarRestoController::class,'update']);
+
+Route::get('pharmacie',[PharmacieController::class,'index']);
+Route::post('pharmacie',[PharmacieController::class,'store']);
+Route::get('pharmacie/{id}',[PharmacieController::class,'show']);
+Route::delete('pharmacie/{id}',[PharmacieController::class,'destroy']);
+//Route::put('pharmacie/{id}',[PharmacieController::class,'update']);
+
+Route::get('site_touristique',[SiteController::class,'index']);
+Route::post('site_touristique',[SiteController::class,'store']);
+Route::get('site_touristique/{id}',[SiteController::class,'show']);
+Route::delete('site_touristique/{id}',[SiteController::class,'destroy']);
+//Route::put('site_touristique/{id}',[SiteController::class,'update']);
+
+Route::get('score',[ScoreController::class,'index']);
+Route::post('score',[ScoreController::class,'store']);
+Route::get('score/{id}',[ScoreController::class,'show']);
+Route::delete('score/{id}',[ScoreController::class,'destroy']);
+//Route::put('score/{id}',[ScoreController::class,'update']);
+
+Route::get('programme_evala',[ProgrammeEvalaController::class,'index']);
+Route::post('programme_evala',[ProgrammeEvalaController::class,'store']);
+Route::get('programme_evala/{id}',[ProgrammeEvalaController::class,'show']);
+Route::delete('programme_evala/{id}',[ProgrammeEvalaController::class,'destroy']);
+//Route::put('programme_evala/{id}',[ProgrammeEvalaController::class,'update']);
+
+
+
 
 
 

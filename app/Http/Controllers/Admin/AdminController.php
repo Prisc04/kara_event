@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\actualite;
 use App\Models\Admin;
 use App\Models\article;
 use App\Models\lutteur;
@@ -57,12 +58,12 @@ class AdminController extends Controller
 
         //les conditons d authentification
         $creds = $request->only('email','password');
-        $creds = Arr::add($creds, 'admin_status', '0');
+        $creds = Arr::add($creds, 'admin_status', '1');
 
         if(Auth::guard('admin')->attempt($creds)){
             return redirect()->route('admin.home')->with('success', 'vous êtes connecter ');
         }else{
-            return redirect()->route('admin.login')->with('fail', 'error de connexion');
+            return redirect()->route('admin.login')->with('fail', 'authentication erronée , utilisateur désactiver ou introuvable !');
         }
     }
 
@@ -117,8 +118,9 @@ class AdminController extends Controller
         $nombrelutteur = lutteur::count();
         $nombrearticles = article::count();
         $nombrepubs = pub::count();
+        $nombreactualites = actualite::count();
 
-        return view('interface_admin.hom',compact('nombreadmins', 'nombresocietes', 'nombrelutteur','nombrearticles','nombrepubs'));
+        return view('interface_admin.hom',compact('nombreadmins', 'nombresocietes', 'nombrelutteur','nombrearticles', 'nombrepubs', 'nombreactualites'));
     }
 
 

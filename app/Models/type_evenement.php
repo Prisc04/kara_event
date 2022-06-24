@@ -14,4 +14,9 @@ class type_evenement extends Model
         'description_type_event',
         'status_type_event',
     ];
+
+    public function evenements()
+    {
+        return $this->hasMany(evenement::class);
+    }
 }

@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
     <!-- End layout styles -->
 
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+
   </head>
   <body>
     <div class="container-scroller">
@@ -128,7 +130,7 @@
                 </div>
               </li>
 
-              <li class="nav-item menu-items">
+            <li class="nav-item menu-items">
                 <a class="nav-link" data-toggle="collapse" href="#lutteur" aria-expanded="false" aria-controls="ui-basic">
                   <span class="menu-icon">
                     <i class="mdi mdi-laptop"></i>
@@ -140,10 +142,26 @@
                   <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="{{route('admin.creer_lutteur')}}">Créer lutteur</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{route('admin.listelutteur')}}">Liste lutteur</a></li>
+                  </ul>
+                </div>
+            </li>
+
+            <li class="nav-item menu-items">
+                <a class="nav-link" data-toggle="collapse" href="#score" aria-expanded="false" aria-controls="ui-basic">
+                  <span class="menu-icon">
+                    <i class="mdi mdi-laptop"></i>
+                  </span>
+                  <span class="menu-title">Gestion score</span>
+                  <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="score">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.creer_Score')}}">Créer score</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.listeScore')}}">Liste score</a></li>
 
                   </ul>
                 </div>
-              </li>
+            </li>
 
             <li class="nav-item menu-items">
                 <a class="nav-link" data-toggle="collapse" href="#type_societe" aria-expanded="false" aria-controls="ui-basic">
@@ -210,6 +228,8 @@
                 </div>
             </li>
 
+
+
             <li class="nav-item menu-items">
                 <a class="nav-link" data-toggle="collapse" href="#type_article" aria-expanded="false" aria-controls="ui-basic">
                     <span class="menu-icon">
@@ -246,6 +266,23 @@
 
 
             <li class="nav-item menu-items">
+                <a class="nav-link" data-toggle="collapse" href="#actualite" aria-expanded="false" aria-controls="ui-basic">
+                    <span class="menu-icon">
+                        <i class="mdi mdi-laptop"></i>
+                      </span>
+                      <span class="menu-title">Gestion actualite</span>
+                      <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="actualite">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.creer_actualite')}}">Créer les actualités</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.listeactualite')}}">Liste des actualités</a></li>
+
+                  </ul>
+                </div>
+            </li>
+
+            <li class="nav-item menu-items">
                 <a class="nav-link" data-toggle="collapse" href="#agence" aria-expanded="false" aria-controls="ui-basic">
                     <span class="menu-icon">
                         <i class="mdi mdi-laptop"></i>
@@ -260,6 +297,107 @@
 
                   </ul>
                 </div>
+            </li>
+
+            <li class="nav-item menu-items">
+                <a class="nav-link" data-toggle="collapse" href="#hotel" aria-expanded="false" aria-controls="ui-basic">
+                    <span class="menu-icon">
+                        <i class="mdi mdi-laptop"></i>
+                      </span>
+                      <span class="menu-title">Gestion hotel</span>
+                      <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="hotel">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.creer_hotel')}}">Créer les hotels</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.listehotel')}}">Liste des hotels</a></li>
+
+                  </ul>
+                </div>
+            </li>
+
+            <li class="nav-item menu-items">
+                <a class="nav-link" data-toggle="collapse" href="#bar_resto" aria-expanded="false" aria-controls="ui-basic">
+                    <span class="menu-icon">
+                        <i class="mdi mdi-laptop"></i>
+                      </span>
+                      <span class="menu-title">Gestion bar & resto</span>
+                      <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="bar_resto">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.creer_BarResto')}}">Création de bar & resto</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.listeBarResto')}}">Liste des bar & resto</a></li>
+
+                  </ul>
+                </div>
+            </li>
+
+            <li class="nav-item menu-items">
+                <a class="nav-link" data-toggle="collapse" href="#pharmacie" aria-expanded="false" aria-controls="ui-basic">
+                    <span class="menu-icon">
+                        <i class="mdi mdi-laptop"></i>
+                      </span>
+                      <span class="menu-title">Gestion pharmacie</span>
+                      <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="pharmacie">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.creer_Pharmacie')}}">Création de pharmacie</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.listePharmacie')}}">Liste des pharmacie</a></li>
+
+                  </ul>
+                </div>
+            </li>
+
+            <li class="nav-item menu-items">
+                <a class="nav-link" data-toggle="collapse" href="#programme_evenement" aria-expanded="false" aria-controls="ui-basic">
+                    <span class="menu-icon">
+                        <i class="mdi mdi-laptop"></i>
+                      </span>
+                      <span class="menu-title">Gestion programme evenement</span>
+                      <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="programme_evenement">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.creer_programme')}}">Créer les programmes</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.listeprogramme')}}">Liste des programmes</a></li>
+
+                  </ul>
+                </div>
+            </li>
+
+            <li class="nav-item menu-items">
+                <a class="nav-link" data-toggle="collapse" href="#programme_evala" aria-expanded="false" aria-controls="ui-basic">
+                    <span class="menu-icon">
+                        <i class="mdi mdi-laptop"></i>
+                      </span>
+                      <span class="menu-title">Gestion programme evala</span>
+                      <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="programme_evala">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.creer_ProgrammeEvela')}}">Créer les programmes</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.listerProgrammeEvala')}}">Liste des programmes</a></li>
+
+                  </ul>
+                </div>
+            </li>
+
+            <li class="nav-item menu-items">
+              <a class="nav-link" data-toggle="collapse" href="#type_evenement" aria-expanded="false" aria-controls="ui-basic">
+                <span class="menu-icon">
+                  <i class="mdi mdi-laptop"></i>
+                </span>
+                <span class="menu-title">Gestion type évènement</span>
+                <i class="menu-arrow"></i>
+              </a>
+              <div class="collapse" id="type_evenement">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" href="{{route('admin.creer_TypeEvenement')}}">Créer type évènement</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{route('admin.listeTypeEvenement')}}">liste type évènement</a></li>
+                </ul>
+              </div>
             </li>
 
               <li class="nav-item menu-items">
@@ -525,5 +663,12 @@
     <!-- Custom js for this page -->
     <script src="{{asset('assets/js/dashboard.js')}}"></script>
     <!-- End custom js for this page -->
-  </body>
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+    <script>
+    $(document).ready( function () {
+        $('#table_id').DataTable();
+    } );
+    </script>
+</body>
 </html>

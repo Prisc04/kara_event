@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('sliders', function (Blueprint $table) {
             $table->id();
-            $table->string('libelle_slider');
-            $table->string('type_slider');
+            $table->string('nom_slider');
             $table->string('photo_slider');
             $table->string('description_slider');
+            $table->boolean('status_slider')->default(0);
             $table->timestamps();
         });
     }

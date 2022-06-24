@@ -16,11 +16,10 @@ class ArticleController extends Controller
     public function store(Request $request){
 
         $article = new article();
-        $article->libelle_article  = $request->libelle_article;
         $article->nom_article  = $request->nom_article;
-        $article->libelle_article  = $request->libelle_article;
-        $article-> description_article = $request->description_article;
-        $article->photo_article  = $request->description_type_article;
+        $article->type_article_id  = $request->type_article_id;
+        $article-> desciption_article = $request->desciption_article;
+        $article->photo_article  = $request->photo_article;
         $article->prix_article  = $request->prix_article;
         $save= $article->save();
         return 'ajouter avec success';

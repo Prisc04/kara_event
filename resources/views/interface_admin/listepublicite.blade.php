@@ -20,16 +20,19 @@
             </ol>
           </nav>
         <div class="table-responsive">
-          <table class="table table-striped">
+
+          <table class="table table-striped" id="table_id" >
             <thead>
-                <th>Order #</th>
-                <th>Nom societe</th>
-                <th>Photo publicite</th>
-                <th>Type publicite</th>
-                <th>Description publicite</th>
-                <th>Date publicite</th>
-                <th>Status publicite</th>
-                <th>Actions</th>
+                <tr>
+                    <th>Order #</th>
+                    <th>Nom societe</th>
+                    <th>Photo publicite</th>
+                    <th>Type publicite</th>
+                    <th>Description publicite</th>
+                    <th>Date Debut/Fin</th>
+                    <th>Status publicite</th>
+                    <th>Actions</th>
+                </tr>
             </thead>
 
             <tbody>
@@ -46,11 +49,11 @@
 
                     <td> {{$pub->type_publicite->nom_type_publicite}}</td>
 
-                    <td> {{$pub->description_publicite}}</td>
+                    <td> {{substr($pub->description_publicite, 0, 30)}}...</td>
 
-                    <td> {{$pub->date_debut_publicite}}</td>
+                    <td> {{$pub->date_debut_publicite}}/{{$pub->date_fin_publicite}}</td>
 
-                    <td> {{$pub->date_fin_publicite}}</td>
+
 
                     <td>
                         @if($pub->status_publicite == 1)

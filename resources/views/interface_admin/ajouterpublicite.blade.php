@@ -62,6 +62,7 @@
                     <div class="form-group">
                         <label for="type_societe_id">Type publicite</label>
                         <select class="form-control p_input @error('type_publicite_id') is-invalid @enderror" name="type_publicite_id" value="{{ old('type_publicite_id') }}" required autocomplete="type_publicite_id" autofocus>
+                            <option selected>selectionnez le type publicite</option>
                             @foreach ($typepublicites  as $typepublicite)
                             <option value="{{$typepublicite->id}}">{{$typepublicite->nom_type_publicite}}</option>
                             @endforeach

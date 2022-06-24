@@ -61,6 +61,17 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="type_evenement_id">Type évènement</label>
+                        <select class="form-control p_input @error('type_evenement_id') is-invalid @enderror" name="type_evenement_id" value="{{ old('type_evenement_id') }}" required autocomplete="type_evenement_id" autofocus>
+                            <option selected>selectionnez le type évènement</option>
+                            @foreach ($typeevenements  as $typeevenement)
+                            <option value="{{$typeevenement->id}}">{{$typeevenement->nom_type_event}}</option>
+                            @endforeach
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
                         <label for="exampleInputName1"> Date début evenement</label>
                         <input type="date" class="form-control p_input @error('date_debut_event') is-invalid @enderror" name="date_debut_event" value="{{ old('date_debut_event') }}" required autocomplete="date_debut_event" autofocus>
                     </div>

@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('type_sliders', function (Blueprint $table) {
             $table->id();
-            $table->string('nom_slider');
+            $table->string('nom_type_slider');
+            $table->boolean('status_type_slider')->default(0);
             $table->timestamps();
         });
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\evenement;
+use App\Models\type_evenement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
@@ -30,7 +31,8 @@ class EvenementController extends Controller
     public function create()
     {
         //
-        return view('interface_admin.ajouterEvenement');
+        $typeevenements = type_evenement::all();
+        return view('interface_admin.ajouterEvenement',compact('typeevenements'));
     }
 
     /**
@@ -45,6 +47,7 @@ class EvenementController extends Controller
         $validator= Validator::make($request->all(),[
             'libelle_event'=>'required',
             'date_debut_event'=>'required',
+            'type_evenement_id'=>'required',
             'date_fin_event'=>'required',
             'photo_event'=>'required|image',
             'description_event'=>'required',
@@ -64,6 +67,7 @@ class EvenementController extends Controller
                 evenement::create([
                     'libelle_event'=>$request->libelle_event,
                     'date_debut_event'=>$request->date_debut_event,
+                    'type_evenement_id'=>$request->type_evenement_id,
                     'date_fin_event'=>$request->date_fin_event,
                     'description_event'=>$request->description_event,
                     'photo_event'=>$file_name,
@@ -94,8 +98,9 @@ class EvenementController extends Controller
     public function edit($id)
     {
         //
+        $typeevenements = type_evenement::all();
         $evenement= evenement::find($id);
-        return view('interface_admin.editevenement', compact('evenement'));
+        return view('interface_admin.editevenement', compact('evenement','typeevenements'));
     }
 
     /**
@@ -112,12 +117,14 @@ class EvenementController extends Controller
         {
             $evenement= evenement::find($id);
             $evenement->libelle_event = $request->libelle_event;
+            $evenement->type_evenement_id = $request->type_evenement_id;
             $evenement->date_debut_event = $request->date_debut_event;
             $evenement->date_fin_event = $request->date_fin_event;
             $evenement->description_event = $request->description_event;
 
             $validator= Validator::make($request->all(),[
                 'libelle_event'=>'required',
+                'type_evenement_id'=>'required',
                 'date_debut_event'=>'required',
                 'date_fin_event'=>'required',
                 'description_event'=>'required',
@@ -139,6 +146,7 @@ class EvenementController extends Controller
                 if($upload){
                     $evenement->update([
                         'libelle_event'=>$request->libelle_event,
+                        'type_evenement_id'=>$request->type_evenement_id,
                         'date_debut_event'=>$request->date_debut_event,
                         'date_fin_event'=>$request->date_fin_event,
                         'description_event'=>$request->description_event,

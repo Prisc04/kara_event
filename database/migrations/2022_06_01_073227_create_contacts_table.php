@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('telephone_contact');
             $table->string('objet_contact');
             $table->string('message_contact');
-            $table->string('status_contact');
+            $table->boolean('status_contact')->default(0);;
             $table->timestamps();
         });
     }
