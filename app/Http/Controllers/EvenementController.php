@@ -18,6 +18,7 @@ class EvenementController extends Controller
         $evenement = new evenement();
         $evenement->libelle_event  = $request->libelle_event;
         $evenement->date_debut_event  = $request->date_debut_event;
+        $evenement->type_evenement_id = $request->type_evenement_id;
         $evenement->date_fin_event  = $request->date_fin_event;
         $evenement->photo_event  = $request->photo_event;
         $evenement->description_event  = $request->description_event;

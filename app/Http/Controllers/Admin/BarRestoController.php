@@ -39,6 +39,32 @@ class BarRestoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    public function store(Request $request){
+
+        $bar_resto = new bar_resto() ;
+        $bar_resto->nom_bar_resto = $request->input('nom_bar_resto');
+        $bar_resto->photo_bar_resto = $request->input('photo_bar_resto');
+        $bar_resto->adresse_bar_resto = $request->input('adresse_bar_resto');
+        $bar_resto->localisation_bar_resto = $request->input('localisation_bar_resto');
+        $bar_resto->description_bar_resto = $request->input('description_bar_resto');
+        $bar_resto->contact_bar_resto = $request->input('contact_bar_resto');
+        $bar_resto->email_bar_resto = $request->input('email_bar_resto');
+        $bar_resto->whatsapp_bar_resto = $request->input('whatsapp_bar_resto');
+        $bar_resto->site_bar_resto = $request->input('site_bar_resto');
+
+        if($request->hasfile('photo_bar_resto')){
+            $file = $request->file('photo_bar_resto');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('upload/barResto/', $filename);
+            $bar_resto->photo_bar_resto = $filename;
+        }
+        $bar_resto->save();
+        return redirect()->route('admin.listeBarResto')->with('success', "enregistrement avec success");
+    }
+
+    /*
     public function store(Request $request)
     {
         //
@@ -81,6 +107,7 @@ class BarRestoController extends Controller
             }
         }
     }
+    */
 
     /**
      * Display the specified resource.
@@ -113,6 +140,57 @@ class BarRestoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    public function update(Request $request, $id){
+        $bar_resto= bar_resto::find($id);
+        $bar_resto->nom_bar_resto = $request->nom_bar_resto;
+        $bar_resto->photo_bar_resto = $request->photo_bar_resto;
+        $bar_resto->adresse_bar_resto = $request->adresse_bar_resto;
+        $bar_resto->localisation_bar_resto = $request->localisation_bar_resto;
+        $bar_resto->description_bar_resto = $request->description_bar_resto;
+        $bar_resto->contact_bar_resto = $request->contact_bar_resto;
+        $bar_resto->email_bar_resto = $request->email_bar_resto;
+        $bar_resto->whatsapp_bar_resto = $request->whatsapp_bar_resto;
+        $bar_resto->site_bar_resto = $request->sitebar_resto;
+
+        $validator= Validator::make($request->all(),[
+            'nom_bar_resto'=>'required',
+            'photo_bar_resto'=>'required|image',
+            'adresse_bar_resto'=>'required',
+            'localisation_bar_resto'=>'required',
+            'description_bar_resto'=>'required',
+            'contact_bar_resto'=>'required',
+            'email_bar_resto'=>'required',
+            'whatsapp_bar_resto '=>'required',
+            'site_bar_resto'=>'required',
+
+        ]);
+        if(!$validator){
+            return redirect()->back()->with('fail', "echec d'enregistrement");
+        }else{
+
+            $file = $request->file('photo_bar_resto');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('upload/barResto/', $filename);
+
+
+                $bar_resto->update([
+                    'nom_bar_resto'=>$request->nom_bar_resto,
+                    'photo_bar_resto'=>$filename,
+                    'adresse_bar_resto'=>$request->adresse_bar_resto,
+                    'localisationbar_resto'=>$request->localisation_bar_resto,
+                    'description_bar_resto'=>$request->description_bar_resto,
+                    'contact_bar_resto'=>$request->contact_bar_resto,
+                    'email_bar_resto'=>$request->email_bar_resto,
+                    'whatsapp_bar_resto'=>$request->whatsapp_bar_resto,
+                    'site_bar_resto'=>$request->site_bar_resto,
+                ]);
+            return redirect()->route('admin.listeBarResto')->with('success', "enregistrement avec success");
+        }
+    }
+
+    /*
     public function update(Request $request, $id)
     {
         //
@@ -166,6 +244,7 @@ class BarRestoController extends Controller
             }
         }
     }
+    */
 
     /**
      * Remove the specified resource from storage.

@@ -43,7 +43,8 @@
                         <tr>
                             <td>{{$key +1}}</td>
                                 <td class="py-1">
-                                    <img src="/storage/file/{{$societe->logo_societe}}" alt="image" />
+
+                                    <img src="/upload/societe/{{$societe->logo_societe}}" alt="image" />
                                 </td>
                             <td> {{$societe->raison_social}}</td>
                             <td> {{$societe->adresse_societe}}</td>
@@ -54,7 +55,7 @@
                             <td> {{$societe->rccm_societe}}</td>
 
                             <td class="py-1">
-                                <img src="/storage/file/{{$societe->photo_societe}}" alt="image" />
+                                <img src="/upload/societe/{{$societe->photo_societe}}" alt="image" />
                             </td>
 
                             <td> {{$societe->note_societe}}</td>

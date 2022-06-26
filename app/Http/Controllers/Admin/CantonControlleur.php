@@ -40,7 +40,25 @@ class CantonControlleur extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+
+    public function store(Request $request){
+        $canton = new canton ;
+        $canton->nom_canton = $request->input('nom_canton');
+        $canton->description_canton = $request->input('description_canton');
+
+        if($request->hasfile('image_canton')){
+            $file = $request->file('image_canton');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('upload/canton/', $filename);
+            $canton->photo_canton = $filename;
+        }
+        $canton->save();
+        return redirect()->route('admin.listecanton')->with('success', "enregistrement avec success");
+    }
+
+      /*
+        public function store(Request $request)
     {
         // dd($request->all());
         $validator= Validator::make($request->all(),[
@@ -68,7 +86,11 @@ class CantonControlleur extends Controller
                 return redirect()->route('admin.listecanton')->with('success', "enregistrement avec success");
             }
         }
+
     }
+    */
+
+
 
     /**
      * Display the specified resource.
@@ -103,6 +125,8 @@ class CantonControlleur extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    /*
     public function update(Request $request, $id)
     {
         $canton= canton::find($id);
@@ -119,15 +143,14 @@ class CantonControlleur extends Controller
             return redirect()->back()->with('fail', "echec d'enregistrement");
         }else{
 
-            $path ='/files';
-            $file=$request->file('image_canton');
-            $file_name = time().'_'.$file->getClientOriginalName();
-            $upload = $file->storeAs($path, $file_name, 'public');
-            $destination = '/file/'.$canton->photo_canton;
-            if (File::exists($destination)){
-                File::delete($destination);
-            }
+            $path ='/file';
+             $file = $request->file('image_canton');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('upload/canton/', $filename);
+            $canton->photo_canton = $filename;
             if($upload){
+
                 $canton->update([
                     'nom_canton'=>$request->nom_canton,
                     'description_canton'=>$request->description_canton,
@@ -139,6 +162,37 @@ class CantonControlleur extends Controller
         }
 
     }
+    */
+
+    public function update(Request $request, $id){
+        $canton= canton::find($id);
+        $canton->nom_canton = $request->nom_canton;
+        $canton->description_canton = $request->description_canton;
+
+        $validator= Validator::make($request->all(),[
+            'nom_canton'=>'required',
+            'description_canton'=>'required',
+            'image_canton'=>'required|image',
+        ]);
+        if(!$validator){
+            return redirect()->back()->with('fail', "echec d'enregistrement");
+        }else{
+
+            $file = $request->file('image_canton');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('upload/canton/', $filename);
+
+
+                $canton->update([
+                    'nom_canton'=>$request->nom_canton,
+                    'description_canton'=>$request->description_canton,
+                    'photo_canton'=>$filename,
+                ]);
+            return redirect()->route('admin.listecanton')->with('success', "enregistrement avec success");
+        }
+    }
+
 
     /**
      * Remove the specified resource from storage.

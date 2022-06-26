@@ -45,6 +45,7 @@ class ProgrammeEvalaController extends Controller
             'date_programme_evala '=>'required',
             'rencontre_programme_evala'=>'required',
             'lieu_programme_evala'=>'required',
+            'localisation_programme_evala'=>'required',
             'heure_programme_evala'=>'required',
             'observation_programme_evala'=>'required',
         ]);
@@ -58,6 +59,7 @@ class ProgrammeEvalaController extends Controller
                     'date_programme_evala'=>$request->date_programme_evala,
                     'rencontre_programme_evala'=>$request->rencontre_programme_evala,
                     'lieu_programme_evala'=>$request->lieu_programme_evala,
+                    'localisation_programme_evala'=>$request->localisation_programme_evala,
                     'heure_programme_evala'=>$request->heure_programme_evala,
                     'observation_programme_evala'=>$request->observation_programme_evala,
                 ]);
@@ -105,6 +107,7 @@ class ProgrammeEvalaController extends Controller
         $programme_evala->date_programme_evala = $request->date_programme_evala;
         $programme_evala->rencontre_programme_evala = $request->rencontre_programme_evala;
         $programme_evala->lieu_programme_evala = $request->lieu_programme_evala;
+        $programme_evala->localisation_programme_evala  = $request->localisation_programme_evala;
         $programme_evala->heure_programme_evala = $request->heure_programme_evala;
         $programme_evala->observation_programme_evala = $request->observation_programme_evala;
 
@@ -113,6 +116,7 @@ class ProgrammeEvalaController extends Controller
             'date_programme_evala'=>'required',
             'rencontre_programme_evala'=>'required',
             'lieu_programme_evala'=>'required',
+            'localisation_programme_evala'=>'required',
             'heure_programme_evala'=>'required',
             'observation_programme_evala'=>'required',
         ]);
@@ -124,6 +128,7 @@ class ProgrammeEvalaController extends Controller
                 'date_programme_evala'=>$request->date_programme_evala,
                 'rencontre_programme_evala'=>$request->rencontre_programme_evala,
                 'lieu_programme_evala'=>$request->lieu_programme_evala,
+                'localisation_programme_evala'=>$request->localisation_programme_evala,
                 'heure_programme_evala'=>$request->heure_programme_evala,
                 'observation_programme_evala'=>$request->observation_programme_evala,
 
@@ -158,7 +163,7 @@ class ProgrammeEvalaController extends Controller
         return redirect()->back()->with('status_programme_evala', 'le programme evala '.$programme_evala->jour_programme_evala.' a été activé avec succès');
     }
 
-    public function desactiver_ProgrammeEvela($id){
+    public function desactiver_ProgrammeEvala($id){
         $programme_evala =  programme_evala::find($id);
 
         $programme_evala->status_programme_evala = 0;

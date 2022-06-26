@@ -14,6 +14,7 @@ class BarRestoController extends Controller
     }
 
     public function store (request $request){
+
         $bar_resto = new  bar_resto();
         $bar_resto->nom_bar_resto  = $request->nom_bar_resto;
         $bar_resto->adresse_bar_resto  = $request->adresse_bar_resto;

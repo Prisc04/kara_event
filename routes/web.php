@@ -242,8 +242,8 @@ Auth::routes();
          Route::get('/ProgrammeEvalaOne/{id}', [ProgrammeEvalaController::class, 'edit'])->name('ProgrammeEvelaOne');
          Route::put('/updateProgrammeEvala/{id}', [ProgrammeEvalaController::class, 'update'])->name('updateProgrammeEvela');
          Route::get('/supprimer_ProgrammeEvala/{id}', [ProgrammeEvalaController::class,'destroy'])->name('supprimer_ProgrammeEvela');
-         Route::get('/activer_ProgrammeEvala/{id}', [ProgrammeEvalaController::class,'activer_ProgrammeEvela'])->name('activer_ProgrammeEvela');
-         Route::get('/desactiver_ProgrammeEvala/{id}', [ProgrammeEvalaController::class,'desactiver_ProgrammeEvala'])->name('desactiver_ProgrammeEvela');
+         Route::get('/activer_ProgrammeEvala/{id}', [ProgrammeEvalaController::class,'activer_ProgrammeEvala'])->name('activer_ProgrammeEvala');
+         Route::get('/desactiver_ProgrammeEvala/{id}', [ProgrammeEvalaController::class,'desactiver_ProgrammeEvala'])->name('desactiver_ProgrammeEvala');
     });
 });
 

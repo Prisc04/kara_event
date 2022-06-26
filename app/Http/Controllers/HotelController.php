@@ -20,6 +20,7 @@ class HotelController extends Controller
         $hotel->photo_hotel  = $request->photo_hotel;
         $hotel->localisation_hotel  = $request->localisation_hotel;
         $hotel->description_hotel  = $request->description_hotel;
+        $hotel->contact_hotel  = $request->contact_hotel;
         $hotel->email_hotel  = $request->email_hotel;
         $hotel->whatsapp_hotel  = $request->whatsapp_hotel;
         $hotel->site_hotel  = $request->site_hotel;

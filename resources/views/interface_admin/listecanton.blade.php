@@ -37,7 +37,7 @@
                     <td>{{$key +1}}</td>
 
                         <td class="py-1">
-                            <img src="/storage/files/{{$canton->photo_canton}}" />
+                            <img src="/upload/canton/{{$canton->photo_canton}}" />
                         </td>
                     <td> {{$canton->nom_canton}}</td>
                     <td> {{$canton->description_canton }} </td>

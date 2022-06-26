@@ -19,6 +19,7 @@ class ProgrammeEvalaController extends Controller
         $programme_evala->date_programme_evala = $request->date_programme_evala;
         $programme_evala->rencontre_programme_evala  = $request->rencontre_programme_evala;
         $programme_evala->lieu_programme_evala  = $request->lieu_programme_evala;
+        $programme_evala->localisation_programme_evala  = $request->localisation_programme_evala;
         $programme_evala->heure_programme_evala  = $request->heure_programme_evala;
         $programme_evala->observation_programme_evala  = $request->observation_programme_evala;
         $save= $programme_evala->save();
@@ -43,4 +44,5 @@ class ProgrammeEvalaController extends Controller
         }
 
     }
+
 }

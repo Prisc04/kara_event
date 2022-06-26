@@ -42,6 +42,8 @@ class SocieteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+     /*
     public function store(Request $request)
     {
         // dd($request->all());
@@ -92,6 +94,39 @@ class SocieteController extends Controller
             }
         }
     }
+    */
+
+    public function store(Request $request){
+
+        $societe = new societe() ;
+
+        $societe->raison_social = $request->input('raison_social');
+        $societe->adresse_societe = $request->input('adresse_societe');
+        $societe->numero_societe = $request->input('numero_societe');
+        $societe->email_societe = $request->input('email_societe');
+        $societe->type_societe_id = $request->input('type_societe_id');
+        $societe->nif_societe = $request->input('nif_societe');
+        $societe->rccm_societe = $request->input('rccm_societe');
+        $societe->logo_societe = $request->input('logo_societe');
+        $societe->photo_societe = $request->input('photo_societe');
+        $societe->note_societe = $request->input('note_societe');
+
+        if($request->hasfile('logo_societe','photo_societe')){
+            $file_logo = $request->file('logo_societe');
+            $file_photo = $request->file('photo_societe');
+            $extention = $file_logo->getClientOriginalExtension();
+            $extention = $file_photo->getClientOriginalExtension();
+            $file_name_logo = time().'.'.$extention;
+            $file_name_photo = time().'.'.$extention;
+            $file_logo->move('upload/societe/', $file_name_logo);
+            $file_photo->move('upload/societe/', $file_name_photo);
+            $societe->logo_societe = $file_name_logo;
+            $societe->photo_societe = $file_name_photo;
+        }
+        $societe->save();
+        return redirect()->route('admin.listesociete')->with('success', "enregistrement avec success");
+    }
+
 
     /**
      * Display the specified resource.

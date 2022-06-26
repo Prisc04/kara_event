@@ -39,6 +39,33 @@ class HotelController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    public function store(Request $request){
+
+        $hotel = new hotel() ;
+        $hotel->nom_hotel = $request->input('nom_hotel');
+        $hotel->photo_hotel = $request->input('photo_hotel');
+        $hotel->adresse_hotel = $request->input('adresse_hotel');
+        $hotel->localisation_hotel = $request->input('localisation_hotel');
+        $hotel->description_hotel = $request->input('description_hotel');
+        $hotel->contact_hotel = $request->input('contact_hotel');
+        $hotel->email_hotel = $request->input('email_hotel');
+        $hotel->whatsapp_hotel = $request->input('whatsapp_hotel');
+        $hotel->site_hotel = $request->input('site_hotel');
+
+        if($request->hasfile('photo_hotel')){
+            $file = $request->file('photo_hotel');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('upload/hotel/', $filename);
+            $hotel->photo_hotel = $filename;
+        }
+        $hotel->save();
+        return redirect()->route('admin.listehotel')->with('success', "enregistrement avec success");
+    }
+
+    /*
+
     public function store(Request $request)
     {
         //
@@ -81,6 +108,7 @@ class HotelController extends Controller
             }
         }
     }
+    */
 
     /**
      * Display the specified resource.
@@ -113,6 +141,58 @@ class HotelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    public function update(Request $request, $id){
+        $hotel= hotel::find($id);
+        $hotel->nom_hotel = $request->nom_hotel;
+        $hotel->photo_hotel = $request->photo_hotel;
+        $hotel->adresse_hotel = $request->adresse_hotel;
+        $hotel->localisation_hotel = $request->localisation_hotel;
+        $hotel->description_hotel = $request->description_hotel;
+        $hotel->contact_hotel = $request->contact_hotel;
+        $hotel->email_hotel = $request->email_hotel;
+        $hotel->whatsapp_hotel = $request->whatsapp_hotel;
+        $hotel->site_hotel = $request->site_hotel;
+
+        $validator= Validator::make($request->all(),[
+            'nom_hotel'=>'required',
+            'photo_hotel'=>'required|image',
+            'adresse_hotel'=>'required',
+            'localisation_hotel'=>'required',
+            'description_hotel'=>'required',
+            'contact_hotel'=>'required',
+            'email_hotel'=>'required',
+            'whatsapp_hotel'=>'required',
+            'site_hotel'=>'required',
+
+        ]);
+        if(!$validator){
+            return redirect()->back()->with('fail', "echec d'enregistrement");
+        }else{
+
+            $file = $request->file('photo_hotel');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('upload/hotel/', $filename);
+
+
+                $hotel->update([
+                    'nom_hotel'=>$request->nom_hotel,
+                    'photo_hotel'=>$filename,
+                    'adresse_hotel'=>$request->adresse_hotel,
+                    'localisation_hotel'=>$request->localisation_hotel,
+                    'description_hotel'=>$request->description_hotel,
+                    'contact_hotel'=>$request->contact_hotel,
+                    'email_hotel'=>$request->email_hotel,
+                    'whatsapp_hotel'=>$request->whatsapp_hotel,
+                    'site_hotel'=>$request->site_hotel,
+                ]);
+            return redirect()->route('admin.listehotel')->with('success', "enregistrement avec success");
+        }
+    }
+
+
+     /*
     public function update(Request $request, $id)
     {
         //
@@ -166,6 +246,8 @@ class HotelController extends Controller
             }
         }
     }
+
+    */
 
     /**
      * Remove the specified resource from storage.

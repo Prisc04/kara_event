@@ -94,7 +94,7 @@
                 <span class="menu-title">Tableau de bord</span>
               </a>
             </li>
-
+            @if(Auth::user()->admin_role =='super_admin')
             <li class="nav-item menu-items">
                 <a class="nav-link" data-toggle="collapse" href="#utilisateur" aria-expanded="false" aria-controls="ui-basic">
                     <span class="menu-icon">
@@ -111,6 +111,7 @@
                   </ul>
                 </div>
             </li>
+            @endif
 
 
 

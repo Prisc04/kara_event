@@ -15,7 +15,7 @@
         <h4 class="card-title">Tableau programme</h4>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="{{route('admin.creer_programme')}}">Créer les programmes </a></li>
+              <li class="breadcrumb-item"><a href="{{route('admin.creer_ProgrammeEvela')}}">Créer les programmes </a></li>
               <li class="breadcrumb-item active" aria-current="page">liste des programmes</li>
             </ol>
           </nav>
@@ -27,6 +27,7 @@
                 <th>Date du programme</th>
                 <th>Rencontre du programme</th>
                 <th>lieu du programme</th>
+                <th>localisation programme</th>
                 <th>Heure du programme</th>
                 <th>Observation du programme</th>
                 <th>Status programme</th>
@@ -42,6 +43,7 @@
                     <td> {{$programme_evala->date_programme_evala }}</td>
                     <td> {{$programme_evala->rencontre_programme_evala}}</td>
                     <td> {{$programme_evala->lieu_programme_evala}} </td>
+                    <td>{{$programme_evala->localisation_programme_evala}}</td>
                     <td> {{$programme_evala->heure_programme_evala 	}} </td>
                     <td> {{$programme_evala->observation_programme_evala}} </td>
                     <td>
@@ -64,11 +66,11 @@
 
                         @if($programme_evala->status_programme_evala == 1)
 
-                        <button class="btn btn-outline-warning" onclick="window.location"> <a href="{{route('admin.desactiver_ProgrammeEvela',$programme_evala->id)}}">Désactiver</a></button>
+                        <button class="btn btn-outline-warning" onclick="window.location"> <a href="{{route('admin.desactiver_ProgrammeEvala',$programme_evala->id)}}">Désactiver</a></button>
 
                         @else
 
-                        <button class="btn btn-outline-success" onclick="window.location"> <a href="{{route('admin.activer_ProgrammeEvela',$programme_evala->id)}}">Activer</a></button>
+                        <button class="btn btn-outline-success" onclick="window.location"> <a href="{{route('admin.activer_ProgrammeEvala',$programme_evala->id)}}">Activer</a></button>
 
                         @endif
 

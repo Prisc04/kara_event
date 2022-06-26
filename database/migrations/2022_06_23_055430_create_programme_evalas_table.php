@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('date_programme_evala');
             $table->string('rencontre_programme_evala');
             $table->string('lieu_programme_evala');
+            $table->string('localisation_programme_evala');
             $table->string('heure_programme_evala');
             $table->string('observation_programme_evala');
             $table->boolean('status_programme_evala')->default(0);

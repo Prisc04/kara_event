@@ -31,7 +31,7 @@
               <div class="col-9">
                 <div class="d-flex align-items-center align-self-start">
                   <h3 class="mb-0"> {{$nombreadmins}} </h3>
-                  <p class="text-success ml-2 mb-0 font-weight-medium">Utilisateur connectés</p>
+                  <p class="text-success ml-2 mb-0 font-weight-medium">Administrateurs</p>
                 </div>
               </div>
               <div class="col-3">
@@ -40,7 +40,7 @@
                 </div>
               </div>
             </div>
-            <h6 class="text-muted font-weight-normal">Nombre d'utilisateur connectée</h6>
+            <h6 class="text-muted font-weight-normal">Nombre d'administrateurs</h6>
           </div>
         </div>
       </div>

@@ -57,6 +57,11 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="exampleInputName1">localisation programme evala</label>
+                    <input type="text" class="form-control p_input @error('localisation_programme_evala') is-invalid @enderror" name="localisation_programme_evala" value="{{$programme_evala->localisation_programme_evala}}" required autocomplete="localisation_programme_evala" autofocus>
+                </div>
+
+                <div class="form-group">
                     <label for="exampleTextarea1">Heure du programme</label>
                     <input type="text" class="form-control  p_input @error('heure_programme_evala') is-invalid @enderror" name="heure_programme_evala" value="{{ $programme_evala->heure_programme_evala }}" required autocomplete="heure_programme_evala" autofocus ">
                 </div>
