@@ -37,13 +37,23 @@
                 @endif
 
                 <div class="form-group">
-                    <label for="exampleTextarea1">Nom canton</label>
-                    <input type="text" class="form-control  p_input @error('nom_canton') is-invalid @enderror" name="nom_canton" value="{{ $score->nom_canton }}" required autocomplete="nom_canton" autofocus ">
+                    <label for="exampleTextarea1">Nom canton 1</label>
+                    <input type="text" class="form-control  p_input @error('nom_canton1') is-invalid @enderror" name="nom_canton1" value="{{ $score->nom_canton1}}" required autocomplete="nom_canton1" autofocus ">
                 </div>
 
                 <div class="form-group">
-                    <label for="exampleInputName1"> Point score</label>
-                    <input type="text" class="form-control p_input @error('point_score') is-invalid @enderror" name="point_score" value="{{$score->point_score}}" required autocomplete="point_score" autofocus>
+                    <label for="exampleInputName1"> Point score 1</label>
+                    <input type="text" class="form-control p_input @error('point_score1') is-invalid @enderror" name="point_score1" value="{{$score->point_score1}}" required autocomplete="point_score1" autofocus>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleTextarea1">Nom canton 2</label>
+                    <input type="text" class="form-control  p_input @error('nom_canton2') is-invalid @enderror" name="nom_canton2" value="{{ $score->nom_canton2}}" required autocomplete="nom_canton2" autofocus ">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputName1"> Point score 2</label>
+                    <input type="text" class="form-control p_input @error('point_score2') is-invalid @enderror" name="point_score2" value="{{$score->point_score2}}" required autocomplete="point_score2" autofocus>
                 </div>
 
                   <button type="submit" class ="btn btn-primary">Modifier</button>

@@ -5,16 +5,25 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AgenceController;
 use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\BarRestoController;
+use App\Http\Controllers\Admin\BoiteNuitController;
 use App\Http\Controllers\Admin\CantonControlleur;
+use App\Http\Controllers\Admin\CentreSanteController;
 use App\Http\Controllers\Admin\EvenementController;
+use App\Http\Controllers\Admin\FrequenceRadioController;
+use App\Http\Controllers\Admin\GuichetController;
+use App\Http\Controllers\Admin\GymController;
 use App\Http\Controllers\Admin\HotelController;
+use App\Http\Controllers\Admin\LieuReligieuController;
 use App\Http\Controllers\Admin\LutteurController;
+use App\Http\Controllers\Admin\MarcheController;
 use App\Http\Controllers\Admin\PharmacieController;
 use App\Http\Controllers\Admin\ProgrammeEvalaController;
 use App\Http\Controllers\Admin\ProgrammeEvenementController;
 use App\Http\Controllers\Admin\PubController;
 use App\Http\Controllers\Admin\ScoreController;
+use App\Http\Controllers\Admin\SiteController;
 use App\Http\Controllers\Admin\SocieteController;
+use App\Http\Controllers\Admin\StationController;
 use App\Http\Controllers\Admin\TypeArticleController;
 use App\Http\Controllers\Admin\TypeEvenementController;
 use App\Http\Controllers\Admin\TypePubliciteController;
@@ -244,6 +253,98 @@ Auth::routes();
          Route::get('/supprimer_ProgrammeEvala/{id}', [ProgrammeEvalaController::class,'destroy'])->name('supprimer_ProgrammeEvela');
          Route::get('/activer_ProgrammeEvala/{id}', [ProgrammeEvalaController::class,'activer_ProgrammeEvala'])->name('activer_ProgrammeEvala');
          Route::get('/desactiver_ProgrammeEvala/{id}', [ProgrammeEvalaController::class,'desactiver_ProgrammeEvala'])->name('desactiver_ProgrammeEvala');
+
+          // Site
+          Route::get('/creerSite', [SiteController::class, 'create'])->name('creer_Site');
+          Route::post('/ajouterSite', [SiteController::class, 'store'])->name('store_Site');
+          Route::get('/admin_listerSite', [SiteController::class, 'index'])->name('listeSite');
+          Route::get('/SiteOne/{id}', [SiteController::class, 'edit'])->name('SiteOne');
+          Route::put('/updateSite/{id}', [SiteController::class, 'update'])->name('updateSite');
+          Route::get('/supprimer_Site/{id}', [SiteController::class,'destroy'])->name('supprimer_Site');
+          Route::get('/activer_Site/{id}', [SiteController::class,'activer_Site'])->name('activer_Site');
+          Route::get('/desactiver_Site/{id}', [SiteController::class,'desactiver_site'])->name('desactiver_Site');
+
+          // Centre sante
+          Route::get('/creerCentreSante', [CentreSanteController::class, 'create'])->name('creer_CentreSante');
+          Route::post('/ajouterCentreSante', [CentreSanteController::class, 'store'])->name('store_CentreSante');
+          Route::get('/admin_listerCentreSante', [CentreSanteController::class, 'index'])->name('listeCentreSante');
+          Route::get('/CentreSanteOne/{id}', [CentreSanteController::class, 'edit'])->name('CentreSanteOne');
+          Route::put('/updateCentreSante/{id}', [CentreSanteController::class, 'update'])->name('updateCentreSante');
+          Route::get('/supprimer_CentreSante/{id}', [CentreSanteController::class,'destroy'])->name('supprimer_CentreSante');
+          Route::get('/activer_CentreSante/{id}', [CentreSanteController::class,'activer_CentreSante'])->name('activer_CentreSante');
+          Route::get('/desactiver_CentreSante/{id}', [CentreSanteController::class,'desactiver_CentreSante'])->name('desactiver_CentreSante');
+
+          // Guichet automatique
+          Route::get('/creerGuichet', [GuichetController::class, 'create'])->name('creer_Guichet');
+          Route::post('/ajouterGuichet', [GuichetController::class, 'store'])->name('store_Guichet');
+          Route::get('/admin_listeGuichet', [GuichetController::class, 'index'])->name('listeGuichet');
+          Route::get('/GuichetOne/{id}', [GuichetController::class, 'edit'])->name('GuichetOne');
+          Route::put('/updateGuichet/{id}', [GuichetController::class, 'update'])->name('updateGuichet');
+          Route::get('/supprimer_Guichet/{id}', [GuichetController::class,'destroy'])->name('supprimer_Guichet');
+          Route::get('/activer_Guichet/{id}', [GuichetController::class,'activer_Guichet'])->name('activer_Guichet');
+          Route::get('/desactiver_Guichet/{id}', [GuichetController::class,'desactiver_Guichet'])->name('desactiver_Guichet');
+
+          // station
+          Route::get('/creerStation', [StationController::class, 'create'])->name('creer_Station');
+          Route::post('/ajouterStation', [StationController::class, 'store'])->name('store_Station');
+          Route::get('/admin_listeStation', [StationController::class, 'index'])->name('listeStation');
+          Route::get('/StationOne/{id}', [StationController::class, 'edit'])->name('StationOne');
+          Route::put('/updateStation/{id}', [StationController::class, 'update'])->name('updateStation');
+          Route::get('/supprimer_Station/{id}', [StationController::class,'destroy'])->name('supprimer_Station');
+          Route::get('/activer_Station/{id}', [StationController::class,'activer_Station'])->name('activer_Station');
+          Route::get('/desactiver_Station/{id}', [StationController::class,'desactiver_Station'])->name('desactiver_Station');
+
+          // Lieu religieu
+          Route::get('/creerLieuReligieu', [LieuReligieuController::class, 'create'])->name('creer_LieuReligieu');
+          Route::post('/ajouterLieuReligieu', [LieuReligieuController::class, 'store'])->name('store_LieuReligieu');
+          Route::get('/admin_LieuReligieu', [LieuReligieuController::class, 'index'])->name('listeLieuReligieu');
+          Route::get('/LieuReligieuOne/{id}', [LieuReligieuController::class, 'edit'])->name('LieuReligieuOne');
+          Route::put('/updateLieuReligieu/{id}', [LieuReligieuController::class, 'update'])->name('updateLieuReligieu');
+          Route::get('/supprimer_LieuReligieu/{id}', [LieuReligieuController::class,'destroy'])->name('supprimer_LieuReligieu');
+          Route::get('/activer_LieuReligieu/{id}', [LieuReligieuController::class,'activer_LieuReligieu'])->name('activer_LieuReligieu');
+          Route::get('/desactiver_LieuReligieu/{id}', [LieuReligieuController::class,'desactiver_LieuReligieu'])->name('desactiver_LieuReligieu');
+
+          // Marche
+          Route::get('/creerMarche', [MarcheController::class, 'create'])->name('creer_Marche');
+          Route::post('/ajouterMarche', [MarcheController::class, 'store'])->name('store_Marche');
+          Route::get('/admin_Marche', [MarcheController::class, 'index'])->name('listeMarche');
+          Route::get('/MarcheOne/{id}', [MarcheController::class, 'edit'])->name('MarcheOne');
+          Route::put('/updateMarche/{id}', [MarcheController::class, 'update'])->name('updateMarche');
+          Route::get('/supprimer_Marche/{id}', [MarcheController::class,'destroy'])->name('supprimer_Marche');
+          Route::get('/activer_Marche/{id}', [MarcheController::class,'activer_Marche'])->name('activer_Marche');
+          Route::get('/desactiver_Marche/{id}', [MarcheController::class,'desactiver_Marche'])->name('desactiver_Marche');
+
+          // Fréquence radio
+          Route::get('/creerFrequenceRadio', [FrequenceRadioController::class, 'create'])->name('creer_FrequenceRadio');
+          Route::post('/ajouterFrequenceRadio', [FrequenceRadioController::class, 'store'])->name('store_FrequenceRadio');
+          Route::get('/admin_FrequenceRadio', [FrequenceRadioController::class, 'index'])->name('listeFrequenceRadio');
+          Route::get('/FrequenceRadioOne/{id}', [FrequenceRadioController::class, 'edit'])->name('FrequenceRadioOne');
+          Route::put('/updateFrequenceRadio/{id}', [FrequenceRadioController::class, 'update'])->name('updateFrequenceRadio');
+          Route::get('/supprimer_FrequenceRadio/{id}', [FrequenceRadioController::class,'destroy'])->name('supprimer_FrequenceRadio');
+          Route::get('/activer_FrequenceRadio/{id}', [FrequenceRadioController::class,'activer_FrequenceRadio'])->name('activer_FrequenceRadio');
+          Route::get('/desactiver_FrequenceRadio/{id}', [FrequenceRadioController::class,'desactiver_FrequenceRadio'])->name('desactiver_FrequenceRadio');
+
+          // Boite Nuit
+          Route::get('/creerBoiteNuit', [BoiteNuitController::class, 'create'])->name('creer_BoiteNuit');
+          Route::post('/ajouterBoiteNuit', [BoiteNuitController::class, 'store'])->name('store_BoiteNuit');
+          Route::get('/admin_BoiteNuit', [BoiteNuitController::class, 'index'])->name('listeBoiteNuit');
+          Route::get('/BoiteNuitoOne/{id}', [BoiteNuitController::class, 'edit'])->name('BoiteNuitOne');
+          Route::put('/updateBoiteNuit/{id}', [BoiteNuitController::class, 'update'])->name('updateBoiteNuit');
+          Route::get('/supprimer_BoiteNuit/{id}', [BoiteNuitController::class,'destroy'])->name('supprimer_BoiteNuit');
+          Route::get('/activer_BoiteNuit/{id}', [BoiteNuitController::class,'activer_BoiteNuit'])->name('activer_BoiteNuit');
+          Route::get('/desactiver_BoiteNuit/{id}', [BoiteNuitController::class,'activer_BoiteNuit'])->name('desactiver_BoiteNuit');
+
+          // gym
+          Route::get('/creerGym', [GymController::class, 'create'])->name('creer_Gym');
+          Route::post('/ajouterGym', [GymController::class, 'store'])->name('store_Gym');
+          Route::get('/admin_Gym', [GymController::class, 'index'])->name('listeGym');
+          Route::get('/GymOne/{id}', [GymController::class, 'edit'])->name('GymOne');
+          Route::put('/updateGym/{id}', [GymController::class, 'update'])->name('updateGym');
+          Route::get('/supprimer_Gym/{id}', [GymController::class,'destroy'])->name('supprimer_Gym');
+          Route::get('/activer_Gym/{id}', [GymController::class,'activer_Gym'])->name('activer_Gym');
+          Route::get('/desactiver_Gym/{id}', [GymController::class,'descactiver_Gym'])->name('desactiver_Gym');
+
+
     });
 });
 

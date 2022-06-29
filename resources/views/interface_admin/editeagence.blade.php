@@ -52,12 +52,17 @@
 
                 <div class="form-group">
                     <label for="exampleTextarea1">Localisation agence</label>
-                    <input class="form-control  p_input @error('localisation_agence') is-invalid @enderror" name="localisation_agence" value="{{ $agent->localisation_agence }}" required autocomplete="localisation_agence" autofocus " id="exampleTextarea1" rows="4">
+                    <input class="form-control  p_input @error('localisation_agence') is-invalid @enderror" name="localisation_agence" value="{{ $agent->localisation_agence}}" required autocomplete="localisation_agence" autofocus " id="exampleTextarea1" rows="4">
                 </div>
 
                 <div class="form-group">
-                    <label for="exampleTextarea1">Description agence</label>
-                    <input class="form-control  p_input @error('description_agence') is-invalid @enderror" name="description_agence" value="{{ $agent->description_agence }}" required autocomplete="description_agence" autofocus " id="exampleTextarea1" rows="4">
+                    <label for="exampleTextarea1">Adresse agence</label>
+                    <input class="form-control  p_input @error('adresse_agence') is-invalid @enderror" name="adresse_agence" value="{{ $agent->adresse_agence}}" required autocomplete="adresse_agence" autofocus " id="exampleTextarea1" rows="4">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleTextarea1">contact agence</label>
+                    <input class="form-control  p_input @error('contact_agence') is-invalid @enderror" name="contact_agence" value="{{ $agent->contact_agence}}" required autocomplete="contact_agence" autofocus " id="exampleTextarea1" rows="4">
                 </div>
 
 

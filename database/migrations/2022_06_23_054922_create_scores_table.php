@@ -15,8 +15,10 @@ return new class extends Migration
     {
         Schema::create('scores', function (Blueprint $table) {
             $table->id();
-            $table->string('nom_canton');
-            $table->string('point_score');
+            $table->string('nom_canton1');
+            $table->string('point_score1');
+            $table->string('nom_canton2');
+            $table->string('point_score2');
             $table->boolean('status_score')->default(0);
             $table->timestamps();
         });

@@ -39,6 +39,29 @@ class ActualiteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    public function store(Request $request){
+
+        $actualite = new actualite() ;
+        $actualite->nom_acteur = $request->input('nom_acteur');
+        $actualite->prenom_acteur = $request->input('prenom_acteur');
+        $actualite->titre_actualite  = $request->input('titre_actualite ');
+        $actualite->description_actualite = $request->input('description_actualite');
+        $actualite->photo_actualite  = $request->input('photo_actualite ');
+        $actualite->date_actualite = $request->input('date_actualite');
+
+        if($request->hasfile('photo_actualite')){
+            $file = $request->file('photo_actualite');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('upload/actualite/', $filename);
+            $actualite->photo_actualite = $filename;
+        }
+        $actualite->save();
+        return redirect()->route('admin.listeactualite')->with('success', "enregistrement avec success");
+    }
+
+     /*
     public function store(Request $request)
     {
         //
@@ -74,7 +97,7 @@ class ActualiteController extends Controller
             }
         }
     }
-
+    */
     /**
      * Display the specified resource.
      *
@@ -125,31 +148,25 @@ class ActualiteController extends Controller
             'photo_actualite'=>'required|image',
         ]);
 
-        if(!$validator){
-            return redirect()->back()->with('fail', "echec d'enregistrement");
-        }else{
+    if(!$validator){
+        return redirect()->back()->with('fail', "echec d'enregistrement");
+    }else{
 
-            $path ='/files';
-            $file=$request->file('photo_actualite');
-            $file_name = time().'_'.$file->getClientOriginalName();
-            $upload = $file->storeAs($path, $file_name, 'public');
-            $destination = '/file/'.$actualite->photo_actualite;
-            if (File::exists($destination)){
-                File::delete($destination);
-            }
-            if($upload){
-                $actualite->update([
-                    'nom_acteur'=>$request->nom_acteur,
-                    'prenom_acteur'=>$request->prenom_acteur,
-                    'titre_actualite'=>$request->titre_actualite,
-                    'date_actualite'=>$request->date_actualite,
-                    'description_actualite'=>$request->description_actualite,
-                    'photo_actualite'=>$file_name,
-                ]);
-                $actualite->save();
-                return redirect()->route('admin.listeactualite')->with('success', "enregistrement avec success");
-            }
-        }
+        $file = $request->file('photo_actualite');
+        $extention = $file->getClientOriginalExtension();
+        $filename = time().'.'.$extention;
+        $file->move('upload/actualite/', $filename);
+
+            $actualite->update([
+                'nom_acteur'=>$request->nom_acteur,
+                'prenom_acteur'=>$request->prenom_acteur,
+                'titre_actualite'=>$request->titre_actualite,
+                'description_actualite'=>$request->description_actualite,
+                'photo_actualite'=>$filename,
+                'date_actualite'=>$request->date_actualite,
+            ]);
+        return redirect()->route('admin.listeactualite')->with('success', "enregistrement avec success");
+    }
     }
 
     /**

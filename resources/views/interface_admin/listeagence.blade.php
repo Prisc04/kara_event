@@ -27,7 +27,8 @@
                             <th>Nom agence</th>
                             <th>Photo agence</th>
                             <th>Localisation agence</th>
-                            <th>Description agence</th>
+                            <th>Adresse agence</th>
+                            <th>Contact agence</th>
                             <th>Status agence</th>
                             <th>Actions</th>
                         </thead>
@@ -41,12 +42,14 @@
                                 <td> {{$agent->nom_agence}}</td>
 
                                 <td class="py-1">
-                                    <img src="/storage/files/{{$agent->photo_agence}}" />
+                                    <img src="/upload/agence/{{$agent->photo_agence}}" />
                                 </td>
 
                                 <td> {{$agent-> localisation_agence}} </td>
 
-                                <td> {{$agent-> description_agence}} </td>
+                                <td> {{$agent-> adresse_agence}} </td>
+
+                                <td> {{$agent-> contact_agence}} </td>
 
 
                                 <td>

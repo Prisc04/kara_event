@@ -12,7 +12,8 @@ class agent extends Model
         'nom_agence',
         'photo_agence',
         'localisation_agence',
-        'description_agence',
+        'adresse_agence ',
+        'contact_agence',
         'status_agence',
     ];
 }

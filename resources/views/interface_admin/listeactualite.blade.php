@@ -40,7 +40,7 @@
                     <td>{{$key +1}}</td>
 
                         <td class="py-1">
-                            <img src="/storage/files/{{$actualite->photo_actualite}}" alt="image" />
+                            <img src="/upload/actualite/{{$actualite->photo_actualite}}" alt="image" />
                         </td>
                     <td> {{$actualite->nom_acteur}}</td>
                     <td> {{$actualite->prenom_acteur}} </td>

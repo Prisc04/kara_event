@@ -40,6 +40,29 @@ class AgenceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    public function store(Request $request){
+
+        $agent = new agent() ;
+        $agent->nom_agence = $request->input('nom_agence');
+        $agent->photo_agence = $request->input('photo_agence');
+        $agent->adresse_agence = $request->input('adresse_agence');
+        $agent->localisation_agence = $request->input('localisation_agence');
+        $agent->contact_agence = $request->input('contact_agence');
+
+        if($request->hasfile('photo_agence')){
+            $file = $request->file('photo_agence');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('upload/agence/', $filename);
+            $agent->photo_agence = $filename;
+        }
+        $agent->save();
+        return redirect()->route('admin.listeagence')->with('success', "enregistrement avec success");
+    }
+
+
+     /*
     public function store(Request $request)
     {
         //
@@ -72,6 +95,7 @@ class AgenceController extends Controller
             }
         }
     }
+    */
 
     /**
      * Display the specified resource.
@@ -104,6 +128,45 @@ class AgenceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    public function update(Request $request, $id){
+        $agent= agent::find($id);
+        $agent->nom_agence = $request->nom_agence;
+        $agent->photo_agence = $request->photo_agence;
+        $agent->adresse_agence = $request->adresse_agence;
+        $agent->localisation_agence = $request->localisation_agence;
+        $agent->contact_agence = $request->contact_agence;
+
+        $validator= Validator::make($request->all(),[
+            'nom_agence'=>'required',
+            'photo_agence'=>'required|image',
+            'adresse_agence'=>'required',
+            'localisation_agence'=>'required',
+            'contact_agence'=>'required',
+
+        ]);
+        if(!$validator){
+            return redirect()->back()->with('fail', "echec d'enregistrement");
+        }else{
+
+            $file = $request->file('photo_agence');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('upload/agence/', $filename);
+
+
+                $agent->update([
+                    'nom_agence'=>$request->nom_agence,
+                    'photo_agence'=>$filename,
+                    'adresse_agence'=>$request->adresse_agencee,
+                    'localisation_agence'=>$request->localisation_agence,
+                    'contact_agence'=>$request->contact_agence,
+                ]);
+            return redirect()->route('admin.listeagence')->with('success', "enregistrement avec success");
+        }
+    }
+
+    /*
     public function update(Request $request, $id)
     {
         //
@@ -146,6 +209,7 @@ class AgenceController extends Controller
             }
         }
     }
+    */
 
     /**
      * Remove the specified resource from storage.

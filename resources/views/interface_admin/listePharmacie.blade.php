@@ -12,7 +12,7 @@
 <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">Tableau hotel</h4>
+        <h4 class="card-title">Tableau pharmacie</h4>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="{{route('admin.creer_Pharmacie')}}">Créer les pharmacie</a></li>
@@ -39,7 +39,7 @@
                     <td>{{$key +1}}</td>
 
                         <td class="py-1">
-                            <img src="/storage/files/{{$pharmacie->photo_pharmacie}}" />
+                            <img src="/upload/pharmacie/{{$pharmacie->photo_pharmacie}}" />
                         </td>
                     <td> {{$pharmacie->nom_pharmacie}}</td>
                     <td> {{$pharmacie->adresse_pharmacie}}</td>

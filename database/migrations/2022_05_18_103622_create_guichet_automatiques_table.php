@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('guichet_automatiques', function (Blueprint $table) {
             $table->id();
-            $table->string('libelle_guichet');
+            $table->string('nom_guichet');
             $table->string('photo_guichet');
             $table->string('description_guichet');
+            $table->string('localisation_guichet');
             $table->boolean('status_guichet')->default(0);
             $table->timestamps();
         });

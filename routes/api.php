@@ -1,17 +1,24 @@
 <?php
 
 use App\Http\Controllers\ActualiteController;
-
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AgenceController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\BarRestoController;
+use App\Http\Controllers\BoiteNuitController;
 use App\Http\Controllers\CantonController;
+use App\Http\Controllers\CentreSanteController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\EvenementController;
+use App\Http\Controllers\FrequenceRadioController;
+use App\Http\Controllers\GuichetController;
+use App\Http\Controllers\GymController;
 use App\Http\Controllers\HotelController;
+use App\Http\Controllers\LieuReligieuController;
 use App\Http\Controllers\LigneCommandeController;
 use App\Http\Controllers\LutteurController;
+use App\Http\Controllers\MarcheController;
 use App\Http\Controllers\PharmacieController;
 use App\Http\Controllers\PrefectureController;
 use App\Http\Controllers\ProgrammeEvalaController;
@@ -20,6 +27,7 @@ use App\Http\Controllers\PubController;
 use App\Http\Controllers\ScoreController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\SocieteController;
+use App\Http\Controllers\StationController;
 use App\Http\Controllers\TypeArticleController;
 use App\Http\Controllers\TypeEvenemantController;
 use App\Http\Controllers\TypePubliciteController;
@@ -161,11 +169,11 @@ Route::get('pharmacie/{id}',[PharmacieController::class,'show']);
 Route::delete('pharmacie/{id}',[PharmacieController::class,'destroy']);
 //Route::put('pharmacie/{id}',[PharmacieController::class,'update']);
 
-Route::get('site_touristique',[SiteController::class,'index']);
-Route::post('site_touristique',[SiteController::class,'store']);
-Route::get('site_touristique/{id}',[SiteController::class,'show']);
-Route::delete('site_touristique/{id}',[SiteController::class,'destroy']);
-//Route::put('site_touristique/{id}',[SiteController::class,'update']);
+Route::get('agent',[AgenceController::class,'index']);
+Route::post('agent',[AgenceController::class,'store']);
+Route::get('agent/{id}',[AgenceController::class,'show']);
+Route::delete('agent/{id}',[AgenceController::class,'destroy']);
+//Route::put('agent/{id}',[AgenceController::class,'update']);
 
 Route::get('score',[ScoreController::class,'index']);
 Route::post('score',[ScoreController::class,'store']);
@@ -178,6 +186,60 @@ Route::post('programme_evala',[ProgrammeEvalaController::class,'store']);
 Route::get('programme_evala/{id}',[ProgrammeEvalaController::class,'show']);
 Route::delete('programme_evala/{id}',[ProgrammeEvalaController::class,'destroy']);
 //Route::put('programme_evala/{id}',[ProgrammeEvalaController::class,'update']);
+
+Route::get('site_touristique',[SiteController::class,'index']);
+Route::post('site_touristique',[SiteController::class,'store']);
+Route::get('site_touristique/{id}',[SiteController::class,'show']);
+Route::delete('site_touristique/{id}',[SiteController::class,'destroy']);
+//Route::put('site_touristique/{id}',[SiteController::class,'update']);
+
+Route::get('centre_sante',[CentreSanteController::class,'index']);
+Route::post('centre_sante',[CentreSanteController::class,'store']);
+Route::get('centre_sante/{id}',[CentreSanteController::class,'show']);
+Route::delete('centre_sante/{id}',[CentreSanteController::class,'destroy']);
+//Route::put('centre_sante/{id}',[CentreSanteController::class,'update']);
+
+Route::get('guichet_automatique',[GuichetController::class,'index']);
+Route::post('guichet_automatique',[GuichetController::class,'store']);
+Route::get('guichet_automatique/{id}',[GuichetController::class,'show']);
+Route::delete('guichet_automatique/{id}',[GuichetController::class,'destroy']);
+//Route::put('guichet_automatique/{id}',[GuichetController::class,'update']);
+
+Route::get('station',[StationController::class,'index']);
+Route::post('station',[StationController::class,'store']);
+Route::get('station/{id}',[StationController::class,'show']);
+Route::delete('station/{id}',[StationController::class,'destroy']);
+//Route::put('station/{id}',[StationController::class,'update']);
+
+Route::get('lieu_religieu',[LieuReligieuController::class,'index']);
+Route::post('lieu_religieu',[LieuReligieuController::class,'store']);
+Route::get('lieu_religieu/{id}',[LieuReligieuController::class,'show']);
+Route::delete('lieu_religieu/{id}',[LieuReligieuController::class,'destroy']);
+//Route::put('lieu_religieu/{id}',[LieuReligieuController::class,'update']);
+
+Route::get('marche',[MarcheController::class,'index']);
+Route::post('marche',[MarcheController::class,'store']);
+Route::get('marche/{id}',[MarcheController::class,'show']);
+Route::delete('marche/{id}',[MarcheController::class,'destroy']);
+//Route::put('marche/{id}',[MarcheController::class,'update']);
+
+Route::get('gym',[GymController::class,'index']);
+Route::post('gym',[GymController::class,'store']);
+Route::get('gym/{id}',[GymController::class,'show']);
+Route::delete('gym/{id}',[GymController::class,'destroy']);
+//Route::put('gym/{id}',[GymController::class,'update']);
+
+Route::get('frequence_radio',[FrequenceRadioController::class,'index']);
+Route::post('frequence_radio',[FrequenceRadioController::class,'store']);
+Route::get('frequence_radio/{id}',[FrequenceRadioController::class,'show']);
+Route::delete('frequence_radio/{id}',[FrequenceRadioController::class,'destroy']);
+//Route::put('frequence_radio/{id}',[FrequenceRadioController::class,'update']);
+
+Route::get('boite_nuit',[BoiteNuitController::class,'index']);
+Route::post('boite_nuit',[BoiteNuitController::class,'store']);
+Route::get('boite_nuit/{id}',[BoiteNuitController::class,'show']);
+Route::delete('boite_nuit/{id}',[BoiteNuitController::class,'destroy']);
+//Route::put('boite_nuit/{id}',[BoiteNuitController::class,'update']);
 
 
 

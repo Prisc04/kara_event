@@ -34,7 +34,7 @@ class PharmacieController extends Controller
 
     public function destroy($hotel){
         $pharmacie = pharmacie::find($hotel);
-        $valider = $hotel->delete();
+        $valider = $pharmacie->delete();
         if($valider){
             return response()->json(['message'=>'pharmacie est supprimé avec success']);
         }else{

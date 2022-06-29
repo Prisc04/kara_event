@@ -15,8 +15,10 @@ class ScoreController extends Controller
 
     public function store (request $request){
         $score = new score();
-        $score->nom_canton  = $request->nom_canton;
-        $score->point_score  = $request->point_score;
+        $score->nom_canton1  = $request->nom_canton;
+        $score->point_score1  = $request->point_score;
+        $score->nom_canton2  = $request->nom_canton;
+        $score->point_score2  = $request->point_score;
         $score->save();
         return 'ajouter avec success';
 

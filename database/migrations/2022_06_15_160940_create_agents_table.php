@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('nom_agence');
             $table->string('photo_agence');
             $table->string('localisation_agence');
-            $table->string('description_agence');
+            $table->string('adresse_agence');
+            $table->string('contact_agence');
             $table->boolean('status_agence')->default(0);
             $table->timestamps();
         });

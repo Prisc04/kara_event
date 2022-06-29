@@ -67,7 +67,7 @@
 
                     <div class="form-group">
                         <div class='col-md-6'>
-                            <label for="">Photo </label>
+                            <label for="">Photo canton </label>
                             <div>
                                 <input type="file" name="image_canton" id="image" required autocomplete="image_canton" autofocus " class="form-control p_input @error('image_canton') is-invalid @enderror" name="image_canton" value="{{ old('image_canton') }}" required autocomplete="image_canton" autofocus " rows="6">
                             </div>

@@ -138,21 +138,21 @@ class TypePubliciteController extends Controller
     public function activer_typepublicite($id){
         $type_publicite =  type_publicite::find($id);
 
-        $type_publicite->status_publicite = 1;
+        $type_publicite->status_type_publicite = 1;
 
         $type_publicite->update();
 
-        return redirect()->back()->with('status_publicite', 'le type publicite '.$type_publicite->nom_type_publicite.' a été activé avec succès');
+        return redirect()->back()->with('status_type_publicite', 'le type publicite '.$type_publicite->nom_type_publicite.' a été activé avec succès');
     }
 
     public function desactiver_typepublicite($id){
 
         $type_publicite =  type_publicite::find($id);
 
-        $type_publicite->status_publicite = 0;
+        $type_publicite->status_type_publicite = 0;
 
         $type_publicite->update();
 
-        return redirect()->back()->with('status_publicite', 'le type publicite '.$type_publicite->nom_type_publicite.' a été desactiver avec succès');
+        return redirect()->back()->with('status_type_publicite', 'le type publicite '.$type_publicite->nom_type_publicite.' a été desactiver avec succès');
     }
 }

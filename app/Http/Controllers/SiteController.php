@@ -17,8 +17,8 @@ class SiteController extends Controller
     public function store(Request $request){
 
         $site_touristique = new site_touristique();
-        $site_touristique->libelle_site  = $request->libelle_site;
         $site_touristique->nom_site  = $request->nom_site;
+        $site_touristique->localisation_site  = $request->localisation_site;
         $site_touristique->description_site  = $request->description_site;
         $site_touristique->photo_site  = $request->photo_site;
         $save= $site_touristique->save();

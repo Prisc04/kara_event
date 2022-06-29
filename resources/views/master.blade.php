@@ -335,6 +335,161 @@
             </li>
 
             <li class="nav-item menu-items">
+                <a class="nav-link" data-toggle="collapse" href="#site_touristique" aria-expanded="false" aria-controls="ui-basic">
+                    <span class="menu-icon">
+                        <i class="mdi mdi-laptop"></i>
+                      </span>
+                      <span class="menu-title">Gestion site</span>
+                      <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="site_touristique">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.creer_Site')}}">Création des sites</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.listeSite')}}">Liste des sites</a></li>
+
+                  </ul>
+                </div>
+            </li>
+
+            <li class="nav-item menu-items">
+                <a class="nav-link" data-toggle="collapse" href="#centre_sante" aria-expanded="false" aria-controls="ui-basic">
+                    <span class="menu-icon">
+                        <i class="mdi mdi-laptop"></i>
+                      </span>
+                      <span class="menu-title">Gestion centre sante</span>
+                      <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="centre_sante">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.creer_CentreSante')}}">Créer les centre de sante</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.listeCentreSante')}}">Liste des centre de sante</a></li>
+
+                  </ul>
+                </div>
+            </li>
+
+            <li class="nav-item menu-items">
+                <a class="nav-link" data-toggle="collapse" href="#gym" aria-expanded="false" aria-controls="ui-basic">
+                    <span class="menu-icon">
+                        <i class="mdi mdi-laptop"></i>
+                      </span>
+                      <span class="menu-title">Gestion gym</span>
+                      <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="gym">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.creer_Gym')}}">Créer les gyms</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.listeGym')}}">Liste des gyms</a></li>
+
+                  </ul>
+                </div>
+            </li>
+
+
+            <li class="nav-item menu-items">
+                <a class="nav-link" data-toggle="collapse" href="#guichet_automatique" aria-expanded="false" aria-controls="ui-basic">
+                    <span class="menu-icon">
+                        <i class="mdi mdi-laptop"></i>
+                      </span>
+                      <span class="menu-title">Gestion guichet</span>
+                      <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="guichet_automatique">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.creer_Guichet')}}">Créer les guichets</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.listeGuichet')}}">Liste des guichets</a></li>
+
+                  </ul>
+                </div>
+            </li>
+
+            <li class="nav-item menu-items">
+                <a class="nav-link" data-toggle="collapse" href="#station" aria-expanded="false" aria-controls="ui-basic">
+                    <span class="menu-icon">
+                        <i class="mdi mdi-laptop"></i>
+                      </span>
+                      <span class="menu-title">Gestion station</span>
+                      <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="station">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.creer_Station')}}">Créer les stations</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.listeStation')}}">Liste des stations</a></li>
+
+                  </ul>
+                </div>
+            </li>
+
+            <li class="nav-item menu-items">
+                <a class="nav-link" data-toggle="collapse" href="#marche" aria-expanded="false" aria-controls="ui-basic">
+                    <span class="menu-icon">
+                        <i class="mdi mdi-laptop"></i>
+                      </span>
+                      <span class="menu-title">Gestion marché</span>
+                      <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="marche">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.creer_Marche')}}">Créer les marchés</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.listeMarche')}}">Liste des marchés</a></li>
+
+                  </ul>
+                </div>
+            </li>
+
+            <li class="nav-item menu-items">
+                <a class="nav-link" data-toggle="collapse" href="#boite_nuit" aria-expanded="false" aria-controls="ui-basic">
+                    <span class="menu-icon">
+                        <i class="mdi mdi-laptop"></i>
+                      </span>
+                      <span class="menu-title">Gestion boite de nuit</span>
+                      <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="boite_nuit">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.creer_BoiteNuit')}}">Créer les boites nuit</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.listeBoiteNuit')}}">Liste des boites nuit</a></li>
+
+                  </ul>
+                </div>
+            </li>
+
+            <li class="nav-item menu-items">
+                <a class="nav-link" data-toggle="collapse" href="#frequence_radio" aria-expanded="false" aria-controls="ui-basic">
+                    <span class="menu-icon">
+                        <i class="mdi mdi-laptop"></i>
+                      </span>
+                      <span class="menu-title">Gestion fréquence radio</span>
+                      <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="frequence_radio">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.creer_FrequenceRadio')}}">Créer les radios</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.listeFrequenceRadio')}}">Liste des radios</a></li>
+
+                  </ul>
+                </div>
+            </li>
+
+
+            <li class="nav-item menu-items">
+                <a class="nav-link" data-toggle="collapse" href="#lieu_religieu" aria-expanded="false" aria-controls="ui-basic">
+                    <span class="menu-icon">
+                        <i class="mdi mdi-laptop"></i>
+                      </span>
+                      <span class="menu-title">Gestion réligion</span>
+                      <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="lieu_religieu">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.creer_LieuReligieu')}}">Créer les réligions</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.listeLieuReligieu')}}">Liste des réligions</a></li>
+
+                  </ul>
+                </div>
+            </li>
+
+            <li class="nav-item menu-items">
                 <a class="nav-link" data-toggle="collapse" href="#pharmacie" aria-expanded="false" aria-controls="ui-basic">
                     <span class="menu-icon">
                         <i class="mdi mdi-laptop"></i>
@@ -632,8 +787,8 @@
             <!-- partial:partials/_footer.html -->
             <footer class="footer">
               <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
-                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin templates</a> from Bootstrapdash.com</span>
+                <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © mekengroup.com 2022</span>
+
               </div>
             </footer>
             <!-- partial -->

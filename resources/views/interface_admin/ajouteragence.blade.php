@@ -77,8 +77,13 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleTextarea1">Description agence</label>
-                        <textarea class="form-control  p_input @error('description_agence') is-invalid @enderror" name="description_agence" value="{{ old('description_agence') }}" required autocomplete="description_agence" autofocus " id="exampleTextarea1" rows="4"></textarea>
+                        <label for="exampleTextarea1">Adrese agence</label>
+                        <input type="text" class="form-control p_input @error('adresse_agence') is-invalid @enderror" name="adresse_agence" value="{{ old('adresse_agence') }}" required autocomplete="adresse_agence" autofocus>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleTextarea1">Contact agence</label>
+                        <input type="text" class="form-control p_input @error('contact_agence') is-invalid @enderror" name="contact_agence" value="{{ old('contact_agence') }}" required autocomplete="contact_agence" autofocus>
                     </div>
 
 

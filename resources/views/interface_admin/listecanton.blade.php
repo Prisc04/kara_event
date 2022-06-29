@@ -20,7 +20,7 @@
             </ol>
           </nav>
         <div class="table-responsive">
-          <table class="table table-striped">
+          <table class="table table-striped" id="table_id">
             <thead>
                 <th>Order #</th>
                 <th>Photo canton</th>

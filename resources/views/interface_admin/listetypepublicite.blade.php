@@ -36,7 +36,7 @@
                                 <td> {{$type_publicite->nom_type_publicite }} </td>
 
                                 <td>
-                                    @if($type_publicite->status_publicite == 1)
+                                    @if($type_publicite->status_type_publicite== 1)
 
                                     <label class="badge badge-success">Activé</label>
 
@@ -53,7 +53,7 @@
                                     <button class="btn btn-outline-primary"> <a href="{{route('admin.typepubliciteOne',$type_publicite->id)}}">Modifier</a></button>
                                     <button class="btn btn-outline-danger"> <a href="{{route('admin.supprimer_typepublicite',$type_publicite->id)}}" id="delete">Supprimer</a></button>
 
-                                    @if($type_publicite->status_publicite == 1)
+                                    @if($type_publicite->status_type_publicite == 1)
 
                                     <button class="btn btn-outline-warning" onclick="window.location"> <a href="{{route('admin.desactiver_typepublicite',$type_publicite->id)}}">Désactiver</a></button>
 

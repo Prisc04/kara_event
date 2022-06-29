@@ -23,9 +23,11 @@
           <table class="table table-striped" id="table_id">
             <thead>
                 <th>Order #</th>
-                <th>Nom canton</th>
-                <th>point score</th>
-                <th>Status score</th>
+                <th>Nom canton 1</th>
+                <th>point score 1</th>
+                <th>Nom canton 2</th>
+                <th>point score 2</th>
+                <th>Status score 2</th>
                 <th>Actions</th>
             </thead>
 
@@ -34,8 +36,10 @@
                 @foreach ($scores  as $key=> $score)
                 <tr>
                     <td>{{$key +1}}</td>
-                    <td> {{$score->nom_canton}}</td>
-                    <td> {{$score->point_score}}</td>
+                    <td> {{$score->nom_canton1}}</td>
+                    <td> {{$score->point_score1}}</td>
+                    <td> {{$score->nom_canton2}}</td>
+                    <td> {{$score->point_score2}}</td>
                     <td>
                         @if($score->status_score == 1)
 

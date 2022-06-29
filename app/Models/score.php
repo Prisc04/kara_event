@@ -10,8 +10,10 @@ class score extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nom_canton',
-        'point_score',
+        'nom_canton1',
+        'point_score1',
+        'nom_canton2',
+        'point_score2',
         'status_score',
 
     ];

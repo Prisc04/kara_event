@@ -9,9 +9,10 @@ class guichet_automatique extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'libelle_guichet',
+        'nom_guichet',
         'photo_guichet',
         'description_guichet',
+        'localisation_guichet',
         'status_guichet',
     ];
 }

@@ -20,7 +20,7 @@
             </ol>
           </nav>
         <div class="table-responsive">
-          <table class="table table-striped">
+          <table class="table table-striped" id="table_id">
             <thead>
                 <th>Order #</th>
                 <th>Libelle évènement</th>
@@ -29,7 +29,7 @@
                 <th>description évènement</th>
                 <th>date fin évènement</th>
                 <th>Photo évènement</th>
-                <th>Status</th>
+                <th>Status évènement</th>
                 <th>Actions</th>
             </thead>
 
@@ -40,7 +40,7 @@
                     <td>{{$key +1}}</td>
 
                     <td class="py-1">
-                        <img src="/storage/file/{{$evenement->photo_event}}" alt="image" />
+                        <img src="/upload/evenement/{{$evenement->photo_event}}" alt="image" />
                     </td>
                     <td> {{$evenement->libelle_event}}</td>
                     <td> {{$evenement->date_debut_event}}</td>

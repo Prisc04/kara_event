@@ -41,6 +41,30 @@ class EvenementController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    public function store(Request $request)
+    {
+        //
+        $evenement = new evenement() ;
+
+        $evenement->libelle_event = $request->input('libelle_event');
+        $evenement->date_debut_event = $request->input('date_debut_event');
+        $evenement->type_evenement_id = $request->input('type_evenement_id');
+        $evenement->date_fin_event = $request->input('date_fin_event');
+        $evenement->description_event = $request->input('description_event');
+
+        if($request->hasfile('photo_event')){
+            $file = $request->file('photo_event');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('upload/evenement/', $filename);
+            $evenement->photo_event = $filename;
+        }
+        $evenement->save();
+        return redirect()->route('admin.listeEvenement')->with('success', "enregistrement avec success");
+    }
+
+    /*
     public function store(Request $request)
     {
         //
@@ -77,6 +101,8 @@ class EvenementController extends Controller
         }
 
     }
+    */
+
 
     /**
      * Display the specified resource.
@@ -110,6 +136,48 @@ class EvenementController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    public function update(Request $request, $id)
+    {
+        //
+        $evenement= evenement::find($id);
+
+        $evenement->libelle_event = $request->libelle_event;
+        $evenement->date_debut_event = $request->date_debut_event;
+        $evenement->type_evenement_id = $request->type_evenement_id;
+        $evenement->date_fin_event = $request->date_fin_event;
+        $evenement->description_event = $request->description_event;
+
+        $validator= Validator::make($request->all(),[
+            'libelle_event'=>'required',
+            'date_debut_event'=>'required',
+            'type_evenement_id'=>'required',
+            'date_fin_event'=>'required',
+            'description_event'=>'required',
+            'photo_event'=>'required|image',
+        ]);
+        if(!$validator){
+            return redirect()->back()->with('fail', "echec d'enregistrement");
+        }else{
+
+            $file = $request->file('photo_event');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('upload/evenement/', $filename);
+
+
+                $evenement->update([
+                    'nom_site'=>$request->nom_site,
+                    'description_site'=>$request->description_site,
+                    'localisation_site'=>$request->localisation_site,
+                    'photo_site'=>$filename,
+                ]);
+            return redirect()->route('admin.listeSite')->with('success', "enregistrement avec success");
+        }
+    }
+
+
+     /*
     public function update(Request $request, $id)
     {
         //
@@ -159,6 +227,7 @@ class EvenementController extends Controller
 
         }
     }
+    */
 
     /**
      * Remove the specified resource from storage.
@@ -180,7 +249,7 @@ class EvenementController extends Controller
     public function activer_evenement($id){
         $evenement =  evenement::find($id);
 
-        $evenement->status_evenement = 1;
+        $evenement->status_event = 1;
 
         $evenement->update();
 

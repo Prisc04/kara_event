@@ -19,7 +19,7 @@ class PharmacieController extends Controller
     {
         //
         $pharmacies = pharmacie::all();
-        return view('interface_admin.listehotel',compact('pharmacies'));
+        return view('interface_admin.listePharmacie',compact('pharmacies'));
     }
 
     /**
@@ -39,6 +39,28 @@ class PharmacieController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    public function store(Request $request){
+
+        $pharmacie = new pharmacie() ;
+        $pharmacie->nom_pharmacie = $request->input('nom_pharmacie');
+        $pharmacie->photo_pharmacie = $request->input('photo_pharmacie');
+        $pharmacie->adresse_pharmacie = $request->input('adresse_pharmacie');
+        $pharmacie->localisation_pharmacie = $request->input('localisation_pharmacie');
+        $pharmacie->contact_pharmacie = $request->input('contact_pharmacie');
+        if($request->hasfile('photo_pharmacie')){
+            $file = $request->file('photo_pharmacie');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('upload/pharmacie/', $filename);
+            $pharmacie->photo_pharmacie = $filename;
+        }
+        $pharmacie->save();
+        return redirect()->route('admin.listePharmacie')->with('success', "enregistrement avec success");
+    }
+
+
+     /*
     public function store(Request $request)
     {
         //
@@ -71,6 +93,7 @@ class PharmacieController extends Controller
             }
         }
     }
+    */
 
     /**
      * Display the specified resource.
@@ -103,6 +126,45 @@ class PharmacieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    public function update(Request $request, $id){
+        $pharmacie= pharmacie::find($id);
+        $pharmacie->nom_pharmacie = $request->nom_pharmacie;
+        $pharmacie->photo_pharmacie = $request->photo_pharmacie;
+        $pharmacie->adresse_pharmacie = $request->adresse_pharmacie;
+        $pharmacie->localisation_pharmacie = $request->localisation_pharmacie;
+        $pharmacie->contact_pharmacie = $request->contact_pharmacie;
+
+        $validator= Validator::make($request->all(),[
+            'nom_pharmacie'=>'required',
+            'photo_pharmacie'=>'required|image',
+            'adresse_pharmacie'=>'required',
+            'localisation_pharmacie'=>'required',
+            'contact_pharmacie'=>'required',
+
+        ]);
+        if(!$validator){
+            return redirect()->back()->with('fail', "echec d'enregistrement");
+        }else{
+
+            $file = $request->file('photo_pharmacie');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('upload/pharmacie/', $filename);
+
+
+                $pharmacie->update([
+                    'nom_pharmacie'=>$request->nom_pharmacie,
+                    'photo_pharmacie'=>$filename,
+                    'adresse_pharmacie'=>$request->adresse_pharmacie,
+                    'localisation_pharmacie'=>$request->localisation_pharmacie,
+                    'contact_pharmacie'=>$request->contact_pharmacie,
+                ]);
+            return redirect()->route('admin.listePharmacie')->with('success', "enregistrement avec success");
+        }
+    }
+
+     /*
     public function update(Request $request, $id)
     {
         //
@@ -146,6 +208,7 @@ class PharmacieController extends Controller
         }
 
     }
+    */
 
     /**
      * Remove the specified resource from storage.

@@ -88,9 +88,9 @@
 
                     <div class="form-group">
                         <div class='col-md-6'>
-                            <label for="">Photo </label>
+                            <label for="">Photo evenement</label>
                             <div>
-                                <input type="file" name="image_event" id="image" required autocomplete="image_event" autofocus " class="form-control p_input @error('description_canton') is-invalid @enderror" name="description_canton" value="{{ old('image_canton') }}" required autocomplete="image_canton" autofocus " rows="6">
+                                <input type="file" name="photo_event" id="image" required autocomplete="photo_event" autofocus " class="form-control p_input @error('photo_event') is-invalid @enderror" name="photo_event" value="{{ old('photo_event') }}" required autocomplete="photo_event" autofocus " rows="6">
                             </div>
                         </div>
                     </div>

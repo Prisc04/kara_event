@@ -153,7 +153,7 @@ class ProgrammeEvalaController extends Controller
         return redirect()->back()->with('success', "vous avez supprimé avec success");
     }
 
-    public function activer_ProgrammeEvela($id){
+    public function activer_ProgrammeEvala($id){
         $programme_evala =  programme_evala::find($id);
 
         $programme_evala->status_programme_evala = 1;

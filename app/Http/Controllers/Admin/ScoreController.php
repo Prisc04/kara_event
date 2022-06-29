@@ -42,15 +42,19 @@ class ScoreController extends Controller
     {
         //
         $validator= Validator::make($request->all(),[
-            'nom_canton'=>'required',
-            'point_score'=>'required',
+            'nom_canton1'=>'required',
+            'point_score1'=>'required',
+            'nom_canton2'=>'required',
+            'point_score2'=>'required',
         ]);
         if(!$validator){
             return redirect()->back()->with('fail', "echec d'enregistrement");
         }else{
             score::create([
-                'nom_canton'=>$request->nom_canton,
-                'point_score'=>$request->point_score,
+                'nom_canton1'=>$request->nom_canton1,
+                'point_score1'=>$request->point_score1,
+                'nom_canton2'=>$request->nom_canton2,
+                'point_score2'=>$request->point_score2,
             ]);
 
             return redirect()->route('admin.listeScore')->with('success', "enregistrement avec success");
@@ -92,20 +96,26 @@ class ScoreController extends Controller
     {
         //
         $score= score::find($id);
-        $score->nom_canton = $request->nom_canton;
-        $score->point_score = $request->point_score;
+        $score->nom_canton1 = $request->nom_canton1;
+        $score->point_score1 = $request->point_score1;
+        $score->nom_canton2 = $request->nom_canton2;
+        $score->point_score2 = $request->point_score2;
 
         $validator= Validator::make($request->all(),[
-            'nom_canton'=>'required',
-            'point_score'=>'required',
+            'nom_canton1'=>'required',
+            'point_score1'=>'required',
+            'nom_canton2'=>'required',
+            'point_score2'=>'required',
         ]);
 
         if(!$validator){
             return redirect()->back()->with('fail', "echec d'enregistrement");
         }else{
             $score->update([
-                'nom_canton'=>$request->nom_canton,
-                'point_score'=>$request->point_score,
+                'nom_canton1'=>$request->nom_canton1,
+                'point_score1'=>$request->point_score1,
+                'nom_canton2'=>$request->nom_canton2,
+                'point_score2'=>$request->point_score2,
             ]);
             $score->save();
             return redirect()->route('admin.listeScore')->with('success', "enregistrement avec success");
