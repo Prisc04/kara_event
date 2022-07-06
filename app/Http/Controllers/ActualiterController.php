@@ -15,8 +15,9 @@ class ActualiterController extends Controller
 
     public function store (request $request){
         $actualite = new actualite();
-        $actualite->nom_auteur  = $request->nom_auteur;
-        $actualite->prenom_auteur  = $request->prenom_auteur;
+        $actualite->nom_acteur  = $request->nom_acteurr;
+        $actualite->prenom_acteur  = $request->prenom_acteur;
+        $actualite->titre_actualite  = $request->titre_actualite;
         $actualite->description_actualite  = $request->description_actualite;
         $actualite->photo_actualite  = $request->photo_actualite;
         $actualite->date_actualite  = $request->date_actualite;

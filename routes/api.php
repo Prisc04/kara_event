@@ -25,6 +25,7 @@ use App\Http\Controllers\ProgrammeEvalaController;
 use App\Http\Controllers\ProgrammeEvenementController;
 use App\Http\Controllers\PubController;
 use App\Http\Controllers\ScoreController;
+use App\Http\Controllers\ServieController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\SocieteController;
 use App\Http\Controllers\StationController;
@@ -32,6 +33,7 @@ use App\Http\Controllers\TypeArticleController;
 use App\Http\Controllers\TypeEvenemantController;
 use App\Http\Controllers\TypePubliciteController;
 use App\Http\Controllers\TypeSocieteController;
+use App\Http\Controllers\TypeStationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 /*
@@ -82,8 +84,6 @@ Route::get('article/{id}',[ArticleController::class,'show']);
 Route::delete('article/{id}',[ArticleController::class,'destroy']);
 //Route::put('article/{id}',[ArticleController::class,'update']);
 
-
-
 Route::get('prefecture',[PrefectureController::class,'index']);
 Route::post('prefecture',[PrefectureController::class,'store']);
 Route::get('prefecture/{id}',[PrefectureController::class,'show']);
@@ -106,7 +106,7 @@ Route::get('type_societe',[TypeSocieteController::class,'index']);
 Route::post('type_societe',[SocieteController::class,'store']);
 Route::get('type_societe/{id}',[SocieteController::class,'show']);
 Route::delete('type_societe/{id}',[SocieteController::class,'destroy']);
-//Route::put('type_societe/{id}',[SocieteController::class,'update']);
+Route::put('type_societe/{id}',[SocieteController::class,'update']);
 
 Route::get('type_article',[TypeArticleController::class,'index']);
 Route::post('type_article',[TypeArticleController::class,'store']);
@@ -240,6 +240,21 @@ Route::post('boite_nuit',[BoiteNuitController::class,'store']);
 Route::get('boite_nuit/{id}',[BoiteNuitController::class,'show']);
 Route::delete('boite_nuit/{id}',[BoiteNuitController::class,'destroy']);
 //Route::put('boite_nuit/{id}',[BoiteNuitController::class,'update']);
+
+Route::get('service',[ServieController::class,'index']);
+Route::post('service',[ServieController::class,'store']);
+Route::get('service/{id}',[ServieController::class,'show']);
+Route::delete('service/{id}',[ServieController::class,'destroy']);
+Route::put('service/{id}',[ServieController::class,'update']);
+
+Route::get('type-station',[TypeStationController::class,'index']);
+Route::post('type-station',[TypeStationController::class,'store']);
+Route::get('type-station/{id}',[TypeStationController::class,'show']);
+Route::delete('type-station/{id}',[TypeStationController::class,'destroy']);
+Route::put('type-station/{id}',[TypeStationController::class,'update']);
+Route::get('type-station/{id}',[TypeStationController::class,'activerTypeStation']);
+Route::get('type-station/{id}',[TypeStationController::class,'desactiverTypeStation']);
+
 
 
 

@@ -82,6 +82,7 @@
                     <option value="super_admin">Super admin</option>
                     <option value="admin">Admin</option>
                     <option value="root">Root</option>
+                    <option value="utilisateur">Utilisateur</option>
                 </select>
                 @error('telephone')
                     <span class="invalid-feedback" role="alert">

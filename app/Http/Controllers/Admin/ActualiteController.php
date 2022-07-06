@@ -45,7 +45,7 @@ class ActualiteController extends Controller
         $actualite = new actualite() ;
         $actualite->nom_acteur = $request->input('nom_acteur');
         $actualite->prenom_acteur = $request->input('prenom_acteur');
-        $actualite->titre_actualite  = $request->input('titre_actualite ');
+        $actualite->titre_actualite  = $request->input('titre_actualite');
         $actualite->description_actualite = $request->input('description_actualite');
         $actualite->photo_actualite  = $request->input('photo_actualite ');
         $actualite->date_actualite = $request->input('date_actualite');

@@ -24,6 +24,17 @@ class BoiteNuitController extends Controller
         return 'ajouter avec success';
     }
 
+    public function update(Request $request, boite_nuit $boite_nuit){
+
+        $boite_nuit->nom_boite_nuit  = $request->nom_boite_nuit;
+        $boite_nuit->photo_boite_nuit  = $request->photo_boite_nuit;
+        $boite_nuit->contact_boite_nuit  = $request->contact_boite_nuit;
+        $boite_nuit->adresse_boite_nuit  = $request->adresse_boite_nuit;
+        $boite_nuit->localisation_boite_nuit  = $request->localisation_boite_nuit;
+        $boite_nuit->update();
+        return response()->json('mise à jour avec success', 200);
+    }
+
     public function show($id){
         $boite_nuit = boite_nuit::find($id);
         if (is_null($boite_nuit)) {

@@ -17,4 +17,5 @@ class station extends Model
         'status_station',
 
     ];
+
 }

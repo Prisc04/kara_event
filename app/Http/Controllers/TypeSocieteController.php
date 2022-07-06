@@ -22,6 +22,14 @@ class TypeSocieteController extends Controller
         return 'ajouter avec success';
     }
 
+    public function update(Request $request, type_societe $type_societe){
+
+        $type_societe->libelle_type_societe  = $request->libelle_type_societe;
+        $type_societe->nom_type_societe  = $request->nom_type_societe;
+        $type_societe->update();
+        return response()->json('mise à jour avec success', 200);
+    }
+
     public function show($id){
         $type_societe = type_societe::find($id);
         if (is_null($type_societe)) {

@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\ProgrammeEvalaController;
 use App\Http\Controllers\Admin\ProgrammeEvenementController;
 use App\Http\Controllers\Admin\PubController;
 use App\Http\Controllers\Admin\ScoreController;
+use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SiteController;
 use App\Http\Controllers\Admin\SocieteController;
 use App\Http\Controllers\Admin\StationController;
@@ -28,6 +29,7 @@ use App\Http\Controllers\Admin\TypeArticleController;
 use App\Http\Controllers\Admin\TypeEvenementController;
 use App\Http\Controllers\Admin\TypePubliciteController;
 use App\Http\Controllers\Admin\TypeSocieteController;
+use App\Http\Controllers\Admin\TypeStationController;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -58,9 +60,10 @@ Auth::routes();
     Route::post('/check', [AdminController::class,'check'])->name('check');
 
     });
-
-        Route::middleware(['auth:admin', ])->group(function(){
         Route::get('/home', [AdminController::class,'hom'])->name('home');
+        Route::get('/unauthorized', [AdminController::class,'unauthorized'])->name('unauthorized');
+        Route::middleware(['auth:admin', 'check.super_admin_root'])->group(function(){
+
         Route::view('/admin_register','interface_admin.register')->name('register');
         Route::post('/create',[AdminController::class,'create'])->name('create');
         Route::post('/logout', [AdminController::class, 'logout'])->name('logout');
@@ -343,6 +346,27 @@ Auth::routes();
           Route::get('/supprimer_Gym/{id}', [GymController::class,'destroy'])->name('supprimer_Gym');
           Route::get('/activer_Gym/{id}', [GymController::class,'activer_Gym'])->name('activer_Gym');
           Route::get('/desactiver_Gym/{id}', [GymController::class,'descactiver_Gym'])->name('desactiver_Gym');
+
+          // Service
+          Route::get('/creerService', [ServiceController::class, 'create'])->name('creer_Service');
+          Route::post('/ajouterService', [ServiceController::class, 'store'])->name('store_Service');
+          Route::get('/admin_Service', [ServiceController::class, 'index'])->name('listeService');
+          Route::get('/ServiceOne/{id}', [ServiceController::class, 'edit'])->name('ServiceOne');
+          Route::put('/updateService/{id}', [ServiceController::class, 'update'])->name('updateService');
+          Route::get('/supprimer_Service/{id}', [ServiceController::class,'destroy'])->name('supprimer_Service');
+          Route::get('/activer_Service/{id}', [ServiceController::class,'activer_Service'])->name('activer_Service');
+          Route::get('/desactiver_Service/{id}', [ServiceController::class,'desactiver_Service'])->name('desactiver_Service');
+
+          // Type Station
+          Route::get('/creerTypeStation', [TypeStationController::class, 'create'])->name('creerTypeStation');
+          Route::post('/ajouterTypeStation', [TypeStationController::class, 'store'])->name('storeTypeStation');
+          Route::get('/adminTypeStation', [TypeStationController::class, 'index'])->name('listeTypeStation');
+          Route::get('/TypeStationOne/{id}', [TypeStationController::class, 'edit'])->name('TypeStationOne');
+          Route::put('/updateTypeStation/{id}', [TypeStationController::class, 'update'])->name('updateTypeStation');
+          Route::get('/supprimerTypeStation/{id}', [TypeStationController::class,'destroy'])->name('supprimerTypeStation');
+          Route::get('/activerTypeStation/{id}', [TypeStationController::class,'activerTypeStation'])->name('activerTypeStation');
+          Route::get('/desactiverTypeStation/{id}', [TypeStationController::class,'desactiverTypeStation'])->name('desactiverTypeStation');
+
 
 
     });

@@ -14,9 +14,15 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
+use function Ramsey\Uuid\v1;
+
 class AdminController extends Controller
 {
     //
+
+    public function unauthorized(){
+        return view('auth/unauthorized');
+    }
 
     public function create(Request $request)
     {
@@ -48,6 +54,7 @@ class AdminController extends Controller
 
     public function check(Request $request)
     {
+
         $request->validate([
             'email'=>'required|email|exists:admins,email',
             'password'=>'required|min:5|max:30',
@@ -113,6 +120,7 @@ class AdminController extends Controller
 
     public function hom()
     {
+
         $nombreadmins = Admin::count();
         $nombresocietes = societe::count();
         $nombrelutteur = lutteur::count();

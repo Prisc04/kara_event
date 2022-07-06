@@ -17,6 +17,7 @@ class ActualiteController extends Controller
         $actualite = new actualite();
         $actualite->nom_auteur  = $request->nom_auteur;
         $actualite->prenom_auteur  = $request->prenom_auteur;
+        $actualite->titre_actualite  = $request->titre_actualite;
         $actualite->description_actualite  = $request->description_actualite;
         $actualite->photo_actualite  = $request->photo_actualite;
         $actualite->date_actualite  = $request->date_actualite;
