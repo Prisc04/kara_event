@@ -54,7 +54,6 @@ class AdminController extends Controller
 
     public function check(Request $request)
     {
-
         $request->validate([
             'email'=>'required|email|exists:admins,email',
             'password'=>'required|min:5|max:30',

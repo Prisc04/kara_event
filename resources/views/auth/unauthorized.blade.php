@@ -14,7 +14,7 @@
         <h3>Halaman yang Anda cari tidak ditemukan.
             <br /> Bisa jadi karena url tersebut salah atau tidak tersedia.</h3>
         <br />
-        <a class="buton" href="{{route('admin.home')}}">www.indrakusuma.web.id</a>
+        <a class="buton" href="{{route('admin_connexion_login')}}">www.indrakusuma.web.id</a>
     </div>
     <style>
         @charset "UTF-8";
